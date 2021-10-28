@@ -1374,7 +1374,7 @@
         "operationId": "bitcoin/syncing",
         "deprecated": false,
         "summary": "Returns if blockchain is syncing",
-        "description": "Returns latest block hash and index",
+        "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
         "tags": [
           "BITCOIN (BTC)"
         ],
