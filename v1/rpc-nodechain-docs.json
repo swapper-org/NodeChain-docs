@@ -1401,19 +1401,28 @@
                     "result": {
                       "type": "object",
                       "required": [
-                        "latestBlockIndex",
-                        "latestBlockHash"
+                        "syncing"
                       ],
                       "properties": {
-                        "latestBlockIndex": {
-                          "type": "integer",
-                          "default": 1939494,
-                          "description": "Latest block index"
+                        "syncing": {
+                          "type": "boolean",
+                          "default": true,
+                          "description": "False if not syncing or fully synchronized"
                         },
-                        "latestBlockHash": {
+                        "syncPercentage": {
                           "type": "string",
-                          "default": "00000000fd96434a33202b4e4caa8fddf2a086959a1e951f9588429d5f76a891",
-                          "description": "Latest block hash"
+                          "default": "6.905658629231632%",
+                          "description": "Percentage of Synchonization"
+                        },
+                        "currentBlock": {
+                          "type": "string",
+                          "default": "352747",
+                          "description": "Latest synchronized block index in the node"
+                        },
+                        "latestBlock": {
+                          "type": "string",
+                          "default": "2101201",
+                          "description": "Latest mined block index"
                         }
                       }
                     }
@@ -1447,7 +1456,7 @@
                 "properties": {
                   "method": {
                     "type": "string",
-                    "default": "getHeight",
+                    "default": "syncing",
                     "description": "Method name"
                   },
                   "id": {
@@ -2568,6 +2577,113 @@
                         "description": "Any transaction hash"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ethereum/syncing": {
+      "post": {
+        "operationId": "ethereum/syncing",
+        "deprecated": false,
+        "summary": "Returns if blockchain is syncing",
+        "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
+        "tags": [
+          "ETHEREUM (ETH)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "syncing"
+                      ],
+                      "properties": {
+                        "syncing": {
+                          "type": "boolean",
+                          "default": true,
+                          "description": "False if not syncing or fully synchronized"
+                        },
+                        "syncPercentage": {
+                          "type": "string",
+                          "default": "6.905658629231632%",
+                          "description": "Percentage of Synchonization"
+                        },
+                        "currentBlock": {
+                          "type": "string",
+                          "default": "352747",
+                          "description": "Latest synchronized block index in the node"
+                        },
+                        "latestBlock": {
+                          "type": "string",
+                          "default": "2101201",
+                          "description": "Latest mined block index"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for ETH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "syncing",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object"
                   }
                 }
               }
@@ -3929,6 +4045,113 @@
                         "description": "Any transaction hash"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bitcoincash/syncing": {
+      "post": {
+        "operationId": "bitcoincash/syncing",
+        "deprecated": false,
+        "summary": "Returns if blockchain is syncing",
+        "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
+        "tags": [
+          "BITCOIN CASH (BCH)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "syncing"
+                      ],
+                      "properties": {
+                        "syncing": {
+                          "type": "boolean",
+                          "default": true,
+                          "description": "False if not syncing or fully synchronized"
+                        },
+                        "syncPercentage": {
+                          "type": "string",
+                          "default": "6.905658629231632%",
+                          "description": "Percentage of Synchonization"
+                        },
+                        "currentBlock": {
+                          "type": "string",
+                          "default": "352747",
+                          "description": "Latest synchronized block index in the node"
+                        },
+                        "latestBlock": {
+                          "type": "string",
+                          "default": "2101201",
+                          "description": "Latest mined block index"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for BCH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "syncing",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object"
                   }
                 }
               }
