@@ -1369,6 +1369,104 @@
         }
       }
     },
+    "/bitcoin/syncing": {
+      "post": {
+        "operationId": "bitcoin/syncing",
+        "deprecated": false,
+        "summary": "Returns if blockchain is syncing",
+        "description": "Returns latest block hash and index",
+        "tags": [
+          "BITCOIN (BTC)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "latestBlockIndex",
+                        "latestBlockHash"
+                      ],
+                      "properties": {
+                        "latestBlockIndex": {
+                          "type": "integer",
+                          "default": 1939494,
+                          "description": "Latest block index"
+                        },
+                        "latestBlockHash": {
+                          "type": "string",
+                          "default": "00000000fd96434a33202b4e4caa8fddf2a086959a1e951f9588429d5f76a891",
+                          "description": "Latest block hash"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for BTC",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "getHeight",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ethereum/broadcastTransaction": {
       "post": {
         "operationId": "ethereum/broadcastTransaction",
