@@ -1,0 +1,709 @@
+{
+    "components": {
+        "schemas": {
+            "AddressModel": {
+                "description": "Bitcoin address",
+                "type": "string",
+                "example": "tb1qm0xyymv7s07rn00dcpuk2ln890sr3my3cmpfdp"
+            },
+            "BalanceModel": {
+                "description": "Bitcoin address balance",
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    },
+                    "balance": {
+                        "type": "object",
+                        "properties": {
+                            "confirmed": {
+                                "description": "Balance confirmed of Bitcoin address",
+                                "type": "string",
+                                "example": "10000"
+                            },
+                            "unconfirmed": {
+                                "description": "Balance unconfirmed of Bitcoin address",
+                                "type": "string",
+                                "example": "0"
+                            }
+                        },
+                        "required": [
+                            "confirmed",
+                            "unconfirmed"
+                        ]
+                    }
+                },
+                "required": [
+                    "address",
+                    "balance"
+                ]
+            },
+            "TransactionHashModel": {
+                "description": "Bitcoin transaction hash",
+                "type": "string",
+                "example": "b66d096bcb068888d4a6987870647ba9c9d2f1da9e360ddafc73efe1f26f2435"
+            },
+            "BlockHashModel": {
+                "type": "string",
+                "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
+            },
+            "IndexModel": {
+                "type": "integer",
+                "example": 1
+            },
+            "BlockHeightModel": {
+                "allOf": [
+                    {
+                        "description": "Bitcoin block height"
+                    },
+                    {
+                        "$ref": "#/components/schemas/IndexModel"
+                    }
+                ]
+            },
+            "ConfirmationsModel": {
+                "description": "Number of confirmations, or -1 if the block is not on the main chain",
+                "type": "integer",
+                "example": 5
+            },
+            "VersionModel": {
+                "description": "Version",
+                "type": "integer",
+                "example": 1
+            },
+            "SizeModel": {
+                "type": "integer",
+                "example": 54354
+            },
+            "TimeModel": {
+                "description": "Time expressed in UNIX epoch time",
+                "type": "integer",
+                "example": 1641234640
+            },
+            "WeightModel": {
+                "type": "integer",
+                "example": 13123
+            },
+            "BlockModel": {
+                "type": "object",
+                "description": "Bitcoin block",
+                "properties": {
+                    "hash": {
+                        "allOf": [
+                            {
+                                "description": "Block hash"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "previousblockhash": {
+                        "allOf": [
+                            {
+                                "description": "The hash of the previous block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "nextblockhash": {
+                        "allOf": [
+                            {
+                                "description": "The hash of the next block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "height": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    },
+                    "nonce": {
+                        "description": "Nonce",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nTx": {
+                        "description": "Number of transactions in the block",
+                        "type": "integer",
+                        "example": 123
+                    },
+                    "confirmations": {
+                        "$ref": "#/components/schemas/ConfirmationsModel"
+                    },
+                    "weight": {
+                        "allOf": [
+                            {
+                                "description": "Block weight as defined in BIP 141"
+                            },
+                            {
+                                "$ref": "#/components/schemas/WeightModel"
+                            }
+                        ]
+                    },
+                    "version": {
+                        "allOf": [
+                            {
+                                "description": "Block version"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VersionModel"
+                            }
+                        ]
+                    },
+                    "versionHex": {
+                        "description": "Block version in hex",
+                        "type": "string",
+                        "example": "0x1"
+                    },
+                    "strippedsize": {
+                        "allOf": [
+                            {
+                                "description": "The block size excluding witness data"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SizeModel"
+                            }
+                        ]
+                    },
+                    "bits": {
+                        "type": "string",
+                        "description": "The bits (HEX)",
+                        "example": "207fffff"
+                    },
+                    "difficulty": {
+                        "type": "number",
+                        "description": "Difficulty"
+                    },
+                    "chainwork": {
+                        "description": "Expected number of hashes required to produce the chain up to this block (in hex)",
+                        "type": "string",
+                        "example": "0000000000000000000000000000000000000000000000000000000000000e9e"
+                    },
+                    "time": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TimeModel"
+                            },
+                            {
+                                "description": "Block time expressed in UNIX epoch time"
+                            }
+                        ]
+                    },
+                    "mediantime": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TimeModel"
+                            },
+                            {
+                                "description": "Median block time expressed in UNIX epoch time"
+                            }
+                        ]
+                    },
+                    "txs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionModel"
+                        }
+                    }
+                }
+            },
+            "TransactionIdModel": {
+                "type": "string",
+                "description": "Transaction Id",
+                "example": "e8966afcca05dfe8e2fa282658835dcfa9e07eb5ea4eef041fd52dfd7d324992"
+            },
+            "ScriptSigModel": {
+                "type": "object",
+                "description": "The script",
+                "properties": {
+                    "asm": {
+                        "type": "string",
+                        "description": "asm",
+                        "example": ""
+                    },
+                    "hex": {
+                        "type": "string",
+                        "description": "hex",
+                        "example": ""
+                    }
+                }
+            },
+            "ScriptPubKeyModel": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "asm": {
+                        "type": "string",
+                        "description": "asm",
+                        "example": "0 816e2d40fa18229712228743990670f1f8e0a9fd"
+                    },
+                    "hex": {
+                        "type": "string",
+                        "description": "hex",
+                        "example": "0014816e2d40fa18229712228743990670f1f8e0a9fd"
+                    },
+                    "reqSigs": {
+                        "type": "integer",
+                        "description": "The required sigs",
+                        "example": 1
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "type",
+                        "example": "witness_v0_keyhash"
+                    },
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AddressModel"
+                        }
+                    }
+                }
+            },
+            "ValueModel": {
+                "type": "integer",
+                "description": "The value in BTC",
+                "example": 100000
+            },
+            "TransactionModel": {
+                "type": "object",
+                "description": "Bitcoin transaction",
+                "properties": {
+                    "hash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    },
+                    "version": {
+                        "$ref": "#/components/schemas/VersionModel"
+                    },
+                    "txid": {
+                        "$ref": "#/components/schemas/TransactionIdModel"
+                    },
+                    "hex": {
+                        "type": "string",
+                        "description": "The serialized, hex-encoded data for 'txid'",
+                        "example": "020000000001010000000000000000000000000000000000000000000000000000000000000000ffffffff05024e070101ffffffff025fa0120000000000160014816e2d40fa18229712228743990670f1f8e0a9fd0000000000000000266a24aa21a9ede2f61c3f71d1defd3fa999dfa36953755c690689799962b48bebd836974e8cf90120000000000000000000000000000000000000000000000000000000000000000000000000"
+                    },
+                    "size": {
+                        "allOf": [
+                            {
+                                "description": "Transaction size"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SizeModel"
+                            }
+                        ]
+                    },
+                    "vsize": {
+                        "allOf": [
+                            {
+                                "description": "Virtual transaction size (differs from size for witness transactions)"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SizeModel"
+                            }
+                        ]
+                    },
+                    "weight": {
+                        "allOf": [
+                            {
+                                "description": "The transaction's weight (between vsize*4 - 3 and vsize*4)"
+                            },
+                            {
+                                "$ref": "#/components/schemas/WeightModel"
+                            }
+                        ]
+                    },
+                    "locktime": {
+                        "type": "integer",
+                        "description": "The lock time",
+                        "example": 0
+                    },
+                    "blockHash": {
+                        "allOf": [
+                            {
+                                "description": "The block hash"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "confirmations": {
+                        "$ref": "#/components/schemas/ConfirmationsModel"
+                    },
+                    "blockTime": {
+                        "allOf": [
+                            {
+                                "description": "The block time expressed in UNIX epoch time"
+                            },
+                            {
+                                "$ref": "#/components/schemas/TimeModel"
+                            }
+                        ]
+                    },
+                    "time": {
+                        "allOf": [
+                            {
+                                "description": "Same as blockTime"
+                            },
+                            {
+                                "$ref": "#/components/schemas/TimeModel"
+                            }
+                        ]
+                    },
+                    "vin": {
+                        "type": "object",
+                        "properties": {
+                            "txid": {
+                                "$ref": "#/components/schemas/TransactionIdModel"
+                            },
+                            "vout": {
+                                "type": "integer",
+                                "description": "The output number",
+                                "example": 0
+                            },
+                            "sequence": {
+                                "type": "number",
+                                "description": "The script sequence number",
+                                "example": 4294967293
+                            },
+                            "scriptSig": {
+                                "$ref": "#/components/schemas/ScriptSigModel"
+                            },
+                            "txinWitness": {
+                                "type": "array",
+                                "description": "hex-encoded witness data (if any)",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "example": [
+                                    "30440220736e93615d002848553e4db94331a7a8a7a1e46531af7c6bec8fcbf6ec2d5017022024ef3164704f850a60b96f1bb680903c602537b2b30b6ba9c941db96781626c501",
+                                    "023b43d1a6879cc98325d4c79e9169fd5ddaa7f964626c297be3c8e8fdca4d8bc0"
+                                ]
+                            }
+                        }
+                    },
+                    "vout": {
+                        "type": "object",
+                        "description": "",
+                        "properties": {
+                            "value": {
+                                "$ref": "#/components/schemas/ValueModel"
+                            },
+                            "n": {
+                                "allOf": [
+                                    {
+                                        "description": "Index"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/IndexModel"
+                                    }
+                                ]
+                            },
+                            "scriptPubKey": {
+                                "$ref": "#/components/schemas/ScriptPubKeyModel"
+                            }
+                        }
+                    }
+                }
+            },
+            "UTXOStatusModel": {
+                "type": "object",
+                "properties": {
+                    "confirmed": {
+                        "type": "boolean",
+                        "description": "Transaction is confirmed"
+                    },
+                    "blockHeight": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "confirmed",
+                    "blockHeight"
+                ]
+            },
+            "GetAddressBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressBalanceResponseModel": {
+                "$ref": "#/components/schemas/BalanceModel"
+            },
+            "GetAddressesBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AddressModel"
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesBalanceResponseModel": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/BalanceModel"
+                }
+            },
+            "GetAddressHistoryRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressHistoryResponseModel": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/TransactionHashModel"
+                }
+            },
+            "GetHeightResponseModel": {
+                "type": "object",
+                "properties": {
+                    "latestBlockHash": {
+                        "allOf": [
+                            {
+                                "description": "Hash of the latest Bitcoin block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "latestBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "latestBlockHash",
+                    "latestBlockIndex"
+                ]
+            },
+            "GetBlockByHashRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockHash": {
+                        "$ref": "#/components/schemas/BlockHashModel"
+                    }
+                },
+                "required": [
+                    "blockHash"
+                ]
+            },
+            "GetBlockByHashResponseModel": {
+                "$ref": "#/components/schemas/BlockModel"
+            },
+            "GetBlockByNumberRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockNumber": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "blockNumber"
+                ]
+            },
+            "GetBlockByNumberResponseModel": {
+                "$ref": "#/components/schemas/BlockModel"
+            },
+            "SyncingResponseModel": {
+                "type": "object",
+                "properties": {
+                    "syncing": {
+                        "type": "boolean",
+                        "description": "False if not syncing or fully synchronized",
+                        "example": false
+                    },
+                    "syncPercentage": {
+                        "type": "string",
+                        "description": "Percentage of Synchonization",
+                        "example": "6.905658629231632%"
+                    },
+                    "currentBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    },
+                    "latestBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "syncing"
+                ]
+            },
+            "GetTransactionRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionResponseModel": {
+                "$ref": "#/components/schemas/TransactionModel"
+            },
+            "NotifyRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    },
+                    "callBackEndpoint": {
+                        "type": "string",
+                        "example": "http://localhost:8080/path"
+                    }
+                },
+                "required": [
+                    "address",
+                    "callBackEndpoint"
+                ]
+            },
+            "NotifyResponseModel": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "success"
+                ]
+            },
+            "GetTransactionCountRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetTransactionCountResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactionCount": {
+                        "type": "integer",
+                        "description": "Number of pending transactions",
+                        "example": 12
+                    }
+                },
+                "required": [
+                    "transactionCount"
+                ]
+            },
+            "GetFeePerByteRequestModel": {
+                "type": "object",
+                "properties": {
+                    "confirmations": {
+                        "$ref": "#/components/schemas/ConfirmationsModel"
+                    }
+                },
+                "required": [
+                    "confirmations"
+                ]
+            },
+            "GetFeePerByteResponseModel": {
+                "type": "object",
+                "properties": {
+                    "feePerByte": {
+                        "type": "string",
+                        "description": "Fee per kbyte",
+                        "example" : "1000"
+                    }
+                },
+                "required": [
+                    "feePerByte"
+                ]
+            },
+            "GetAddressUnspentRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressUnspentResponseModel": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "txHash": {
+                            "$ref": "#/components/schemas/TransactionHashModel"
+                        },
+                        "vout": {
+                            "type": "string",
+                            "description": "Index number for an output in the transaction.",
+                            "example": "0"
+                        },
+                        "status": {
+                            "$ref": "#/components/schemas/UTXOStatusModel"
+                        },
+                        "value": {
+                            "$ref": "#/components/schemas/ValueModel"
+                        }
+                    },
+                    "required": [
+                        "txHash",
+                        "vout",
+                        "status",
+                        "value"
+                    ]
+                }
+            },
+            "GetTransactionHexRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionHexResponseModel": {
+                "type": "object",
+                "properties": {
+                    "rawTransaction": {
+                        "type": "string",
+                        "description": "Raw transaction (Hex format)",
+                        "example": "01000000000101c0d72dcba53996705fff03465f23b594ec934c29a7645045abe07385a58470a101000000171600140e2c5153cf335a150df44013c4572cd52a70aa8bfdffffff020100000000000000165114391234a573b02814f03ff59673c86b68c2869537091839000000000017a914004863ca1a414c0a174b2666bf067c69524aabd4870247304402201cc95f4683cf0fc46923b1a7f78454adbd57150268ab4960efd3c7df6fc83e22022035917f815bfd80052812b8b1559d314f2459e5876abe9bf1b36f8d4e0dda6e0e012102c379336fce4796dc9bbaa953ef5003e070853b2bf53bdf00b9cfb83e3e1ef84f00000000"
+                    }
+                },
+                "required": [
+                    "rawTransaction"
+                ]
+            }
+        }
+    }
+}

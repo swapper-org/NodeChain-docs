@@ -1,0 +1,832 @@
+{
+    "components": {
+        "schemas": {
+            "AddressModel": {
+                "type": "string",
+                "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+            },
+            "BalanceModel": {
+                "description": "Ethreum address balance",
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "balance": {
+                        "type": "object",
+                        "properties": {
+                            "confirmed": {
+                                "description": "Balance confirmed of Ethereum address",
+                                "type": "string",
+                                "example": 10000
+                            },
+                            "unconfirmed": {
+                                "description": "Balance unconfirmed of Ethereum address",
+                                "type": "string",
+                                "example": 0
+                            }
+                        },
+                        "required": [
+                            "confirmed",
+                            "unconfirmed"
+                        ]
+                    }
+                },
+                "required": [
+                    "address",
+                    "balance"
+                ]
+            },
+            "BlockHashModel": {
+                "type": "string",
+                "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+            },
+            "IndexModel": {
+                "type": "string",
+                "example": "0x1"
+            },
+            "BlockHeightModel": {
+                "allOf": [
+                    {
+                        "description": "Ethereum block height"
+                    },
+                    {
+                        "$ref": "#/components/schemas/IndexModel"
+                    }
+                ]
+            },
+            "GasPriceModel": {
+                "type": "string",
+                "description": "Ethereum gas price",
+                "example": "0x79ccd3"
+            },
+            "GasModel": {
+                "type": "string",
+                "example": "0x79ccd3"
+            },
+            "NonceModel": {
+                "type": "string",
+                "example": "0x4db7a1c01d8a8072"
+            },
+            "LogsBloomModel": {
+                "type": "string",
+                "example": "0x4848112002a2020aaa0812180045840210020005281600c80104264300080008000491220144461026015300100000128005018401002090a824a4150015410020140400d808440106689b29d0280b1005200007480ca950b15b010908814e01911000054202a020b05880b914642a0000300003010044044082075290283516be82504082003008c4d8d14462a8800c2990c88002a030140180036c220205201860402001014040180002006860810ec0a1100a14144148408118608200060461821802c081000042d0810104a8004510020211c088200420822a082040e10104c00d010064004c122692020c408a1aa2348020445403814002c800888208b1"
+            },
+            "ValueModel": {
+                "type": "string",
+                "example": "0x9184e72a"
+            },
+            "TransactionCallModel": {
+                "type": "object",
+                "properties": {
+                    "from": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum sender address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "to": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum receipt address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "gas": {
+                        "allOf": [
+                            {
+                                "description": "Gas provided for the transaction execution"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    },
+                    "gasPrice": {
+                        "$ref": "#/components/schemas/GasPriceModel"
+                    },
+                    "value": {
+                        "description": "Integer of the value sent in a transaction",
+                        "type": "string",
+                        "example": "0x9184e72a"
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "Hash of the method signature and encoded parameters",
+                        "example": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+                    }
+                }
+            },
+            "SizeModel": {
+                "type": "string",
+                "example": "0x41c7"
+            },
+            "DifficultyModel": {
+                "type": "string",
+                "example": "0x12ac11391a2f3872fcd"
+            },
+            "TransactionHashModel": {
+                "type": "string",
+                "description": "Hash of the transaction",
+                "example": "0x8784d99762bccd03b2086eabccee0d77f14d05463281e121a62abfebcf0d2d5f"
+            },
+            "TransactionModel": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/TransactionCallModel"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "blockHash": {
+                                "allOf": [
+                                    {
+                                        "description": "32 Bytes - hash of the block where this transaction was in. null when its pending"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/BlockHashModel"
+                                    }
+                                ]
+                            },
+                            "blockNumber": {
+                                "$ref": "#/components/schemas/BlockHeightModel"
+                            },
+                            "hash": {
+                                "$ref": "#/components/schemas/TransactionHashModel"
+                            },
+                            "input": {
+                                "type": "string",
+                                "description": "The data send along with the transaction",
+                                "example": "0x6ea056a9000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bd8d7fa6f8cc00"
+                            },
+                            "nonce": {
+                                "allOf": [
+                                    {
+                                        "description": "The number of transactions made by the sender prior to this one (Hex)"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/NonceModel"
+                                    }
+                                ]
+                            },
+                            "r": {
+                                "type": "string",
+                                "description": "ECDSA signature r",
+                                "example": "0xd1556332df97e3bd911068651cfad6f975a30381f4ff3a55df7ab3512c78b9ec"
+                            },
+                            "s": {
+                                "type": "string",
+                                "description": "ECDSA signature s",
+                                "example": "0x66b51cbb10cd1b2a09aaff137d9f6d4255bf73cb7702b666ebd5af502ffa4410"
+                            },
+                            "v": {
+                                "type": "string",
+                                "description": "ECDSA signature v",
+                                "example": "0x25"
+                            },
+                            "transactionIndex": {
+                                "allOf": [
+                                    {
+                                        "description": "integer of the transactions index position in the block (Hex)"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/IndexModel"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "BlockModel": {
+                "description": "Ethereum block",
+                "type": "object",
+                "properties": {
+                    "number": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    },
+                    "hash": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum block hash"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "parentHash": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum previous block hash"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "nonce": {
+                        "allOf": [
+                            {
+                                "description": "Hash of the generated proof-of-work. Null if the returned block is the pending block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/NonceModel"
+                            }
+                        ]
+                    },
+                    "miner": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum miner address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "size": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum block size"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SizeModel"
+                            }
+                        ]
+                    },
+                    "mixHash": {
+                        "type": "string",
+                        "description": "Mix hash",
+                        "example": "0x3d1fdd16f15aeab72e7db1013b9f034ee33641d92f71c0736beab4e67d34c7a7"
+                    },
+                    "sha3Uncles": {
+                        "type": "string",
+                        "description": "SHA3 of the uncles data in this block",
+                        "example": "0x8a562e7634774d3e3a36698ac4915e37fc84a2cd0044cb84fa5d80263d2af4f6"
+                    },
+                    "logsBloom": {
+                        "allOf": [
+                            {
+                                "description": "Logs bloom filter or null if pending"
+                            },
+                            {
+                                "$ref": "#/components/schemas/LogsBloomModel"
+                            }
+                        ]
+                    },
+                    "transactionsRoot": {
+                        "type": "string",
+                        "description": "Root of this block's transaction trie",
+                        "example": "0xf98631e290e88f58a46b7032f025969039aa9b5696498efc76baf436fa69b262"
+                    },
+                    "difficulty": {
+                        "allOf": [
+                            {
+                                "description": "Difficulty for this block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/DifficultyModel"
+                            }
+                        ]
+                    },
+                    "gasLimit": {
+                        "allOf": [
+                            {
+                                "description": "Maximun gas allowed in this block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    },
+                    "gasUsed": {
+                        "allOf": [
+                            {
+                                "description": "Total used fas by all transactions in this block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    },
+                    "extraData": {
+                        "type": "string",
+                        "description": "Extra data field of this block",
+                        "example": "0x737061726b706f6f6c2d636e2d6e6f64652d3132"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "description": "Unix timestamp of when this block was colated",
+                        "example": "0x5b541449"
+                    },
+                    "totalDifficulty": {
+                        "allOf": [
+                            {
+                                "description": "Total difficulty of the chain until this block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/DifficultyModel"
+                            }
+                        ]
+                    },
+                    "stateRoot": {
+                        "type": "string",
+                        "description": "Root of this block's final state trie",
+                        "example": "0xf5208fffa2ba5a3f3a2f64ebd5ca3d098978bedd75f335f56b705d8715ee2305"
+                    },
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionModel"
+                        }
+                    },
+                    "uncles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionModel"
+                        }
+                    }
+                }
+            },
+            "TransactionReceiptModel": {
+                "type": "object",
+                "properties": {
+                    "transactionHash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    },
+                    "transactionIndex": {
+                        "allOf": [
+                            {
+                                "description": "Integer of the transactions index position in the block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/IndexModel"
+                            }
+                        ]
+                    },
+                    "blockHash": {
+                        "allOf": [
+                            {
+                                "description": "32 Bytes - hash of the block where this transaction was in"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "blockNumber": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    },
+                    "from": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum sender address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "to": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum receipt address. Null when the transaction is a contract creation transaction"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "cumulativeGasUsed": {
+                        "allOf": [
+                            {
+                                "description": "The total amount of gas used when this transaction was executed in the block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    },
+                    "gasUsed": {
+                        "allOf": [
+                            {
+                                "description": "The amount of gas used by this specific transaction alone"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    },
+                    "contractAddress": {
+                        "allOf": [
+                            {
+                                "description": "20 Bytes - The contract address created, if the transaction was a contract creation, otherwise - null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    },
+                    "logs": {
+                        "type": "object",
+                        "properties": {
+                            "removed": {
+                                "description": "true when the log was removed, due to a chain reorganization, false if it's a valid log.",
+                                "type": "boolean"
+                            },
+                            "logIndex": {
+                                "allOf": [
+                                    {
+                                        "description": "Integer of the log index position in the block. null when its pending log"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/IndexModel"
+                                    }
+                                ]
+                            },
+                            "transactionIndex": {
+                                "allOf": [
+                                    {
+                                        "description": "Integer of the transactions index position log was created from. null when its pending log"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/IndexModel"
+                                    }
+                                ]
+                            },
+                            "transactionHash": {
+                                "$ref": "#/components/schemas/TransactionHashModel"
+                            },
+                            "blockHash": {
+                                "allOf": [
+                                    {
+                                        "description": "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log."
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/BlockHashModel"
+                                    }
+                                ]
+                            },
+                            "blockNumber": {
+                                "allOf": [
+                                    {
+                                        "description": "The block number where this log was in. null when its pending. null when its pending log"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/IndexModel"
+                                    }
+                                ]
+                            },
+                            "address": {
+                                "allOf": [
+                                    {
+                                        "description": "20 Bytes - address from which this log originated"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/AddressModel"
+                                    }
+                                ]
+                            },
+                            "data": {
+                                "description": "Contains one or more 32 Bytes non-indexed arguments of the log",
+                                "type": "string",
+                                "example": "0x000000000000000000000000398137383b3d25c92898c656696e41950e47316b00000000000000000000000000000000000000000000000000000000000cee6100000000000000000000000000000000000000000000000000000000000ac3e100000000000000000000000000000000000000000000000000000000005baf35"
+                            },
+                            "topics": {
+                                "description": " Array of 0 to 4 32 Bytes of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declared the event with the anonymous specifier.)",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "example": [
+                                    "0x241ea03ca20251805084d27d4440371c34a0b85ff108f6bb5611248f73818b80"
+                                ]
+                            }
+                        }
+                    },
+                    "logsBloom": {
+                        "allOf": [
+                            {
+                                "description": "Bloom filter for light clients to quickly retrieve related logs"
+                            },
+                            {
+                                "$ref": "#/components/schemas/LogsBloomModel"
+                            }
+                        ]
+                    }
+                }
+            },
+            "GetAddressBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum address"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AddressModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressBalanceResponseModel": {
+                "$ref": "#/components/schemas/BalanceModel"
+            },
+            "GetAddressesBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "allOf": [
+                                {
+                                    "description": "Ethereum address"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/AddressModel"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesBalanceResponseModel": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/BalanceModel"
+                }
+            },
+            "GetHeightResponseModel": {
+                "type": "object",
+                "properties": {
+                    "latestBlockHash": {
+                        "allOf": [
+                            {
+                                "description": "Latest block hash"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    },
+                    "latestBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "latestBlockHash",
+                    "latestBlockIndex"
+                ]
+            },
+            "GetGasPriceResponseModel": {
+                "type": "object",
+                "properties": {
+                    "gasPrice": {
+                        "$ref": "#/components/schemas/GasPriceModel"
+                    }
+                },
+                "required": [
+                    "gasPrice"
+                ]
+            },
+            "SyncingResponseModel": {
+                "type": "object",
+                "properties": {
+                    "syncing": {
+                        "type": "boolean",
+                        "description": "False if not syncing or fully synchronized",
+                        "example": false
+                    },
+                    "syncPercentage": {
+                        "type": "string",
+                        "description": "Percentage of Synchonization",
+                        "example": "6.905658629231632%"
+                    },
+                    "currentBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    },
+                    "latestBlockIndex": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "syncing"
+                ]
+            },
+            "BroadcastTransactionRequestModel": {
+                "type": "object",
+                "properties": {
+                    "rawTransaction": {
+                        "description": "The transaction hash in hex",
+                        "type": "string",
+                        "example": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+                    }
+                },
+                "required": [
+                    "rawTransaction"
+                ]
+            },
+            "BroadcastTransactionResponseModel": {
+                "type": "object",
+                "properties": {
+                    "broadcasted": {
+                        "description": "The transaction hash, or the zero hash if the transaction is not yet available",
+                        "type": "string",
+                        "example": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
+                    }
+                },
+                "required": [
+                    "broadcasted"
+                ]
+            },
+            "EstimateGasRequestModel": {
+                "type": "object",
+                "properties": {
+                    "tx": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum transaction call"
+                            },
+                            {
+                                "$ref": "#/components/schemas/TransactionCallModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "tx"
+                ]
+            },
+            "EstimateGasResponseModel": {
+                "type": "object",
+                "properties": {
+                    "estimatedGas": {
+                        "allOf": [
+                            {
+                                "description": "Estimated gas for the transaction execution"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GasModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "estimatedGas"
+                ]
+            },
+            "GetBlockByHashRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockHash": {
+                        "allOf": [
+                            {
+                                "description": "A string representing the hash (32 bytes) of a block"
+                            },
+                            {
+                                "$ref": "#/components/schemas/BlockHashModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "blockHash"
+                ]
+            },
+            "GetBlockByHashResponseModel": {
+                "$ref": "#/components/schemas/BlockModel"
+            },
+            "GetBlockByNumberRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockNumber": {
+                        "$ref": "#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "blockNumber"
+                ]
+            },
+            "GetBlockByNumberResponseModel": {
+                "$ref": "#/components/schemas/BlockModel"
+            },
+            "GetTransactionCountRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressModel"
+                    },
+                    "pending": {
+                        "description": "True to get pending blocks",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "address",
+                    "pending"
+                ]
+            },
+            "GetTransactionCountResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactionCount": {
+                        "description": "Number of transactions",
+                        "type": "integer",
+                        "example": 0
+                    }
+                },
+                "required": [
+                    "transactionCount"
+                ]
+            },
+            "GetTransactionReceiptRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionReceiptResponseModel": {
+                "$ref": "#/components/schemas/TransactionReceiptModel"
+            },
+            "GetTransactionRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transaction": {
+                        "$ref": "#/components/schemas/TransactionModel"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "$ref": "#/components/schemas/AddressModel"
+                                },
+                                "amount": {
+                                    "description": "Value in WEI",
+                                    "type": "integer",
+                                    "example": 1000000000000000000
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "$ref": "#/components/schemas/AddressModel"
+                                },
+                                "amount": {
+                                    "description": "Value in WEI",
+                                    "type": "integer",
+                                    "example": 1000000000000000000
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -4,13 +4,13 @@
   "x-api-id": "nodechain-real-time",
   "info": {
     "title": "Real Time NodeChain API",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Docs relating to the WebSocket API, including the connection to the APIs of the native nodes of each blockchain. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
   },
   "paths": {
-    "/bitcoin/subscribeAddressBalance": {
+    "/bitcoin/subscribeToAddressBalance": {
       "post": {
-        "operationId": "bitcoin/subscribeaddressbalance",
+        "operationId": "bitcoin/subscribeToAddressBalance",
         "deprecated": false,
         "summary": "Subscribe to balance changes for any address",
         "description": "Subscribe to balance changes for any address",
@@ -70,7 +70,7 @@
                 "properties": {
                   "method": {
                     "type": "string",
-                    "default": "subscribeAddressBalance",
+                    "default": "subscribeToAddressBalance",
                     "description": "Method name"
                   },
                   "id": {
@@ -100,9 +100,9 @@
         }
       }
     },
-    "/bitcoin/unsubscribeAddressBalance": {
+    "/bitcoin/unsubscribeFromAddressBalance": {
       "post": {
-        "operationId": "bitcoin/unsubscribeAddressBalance",
+        "operationId": "bitcoin/unsubscribeFromAddressBalance",
         "deprecated": false,
         "summary": "Unsubscribe to balance changes for any address",
         "description": "Unsubscribe to balance changes for any address",
@@ -162,7 +162,7 @@
                 "properties": {
                   "method": {
                     "type": "string",
-                    "default": "unsubscribeAddressBalance",
+                    "default": "unsubscribeFromAddressBalance",
                     "description": "Method name"
                   },
                   "id": {
@@ -192,7 +192,173 @@
         }
       }
     },
-    "/ethereum/subscribeAddressBalance": {
+    "/bitcoin/subscribeToNewBlocks": {
+      "post": {
+        "operationId": "bitcoin/subscribeToNewBlocks",
+        "deprecated": false,
+        "summary": "Subscribe to new blocks",
+        "description": "Subscribe to new blocks",
+        "tags": [
+          "BITCOIN (BTC)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/subscribeModel"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for BTC",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "subscribeToNewBlocks",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bitcoin/unsubscribeFromNewBlocks": {
+      "post": {
+        "operationId": "bitcoin/unsubscribeFromNewBlocks",
+        "deprecated": false,
+        "summary": "Unsubscribe from new blocks",
+        "description": "Unsubscribe from new blocks",
+        "tags": [
+          "BITCOIN (BTC)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/unsubscribeModel"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for BTC",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "unsubscribeFromNewBlocks",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ethereum/subscribeToAddressBalance": {
       "post": {
         "operationId": "ethereum/subscribeaddressbalance",
         "deprecated": false,
@@ -284,7 +450,7 @@
         }
       }
     },
-    "/ethereum/unsubscribeAddressBalance": {
+    "/ethereum/unsubscribeFromAddressBalance": {
       "post": {
         "operationId": "ethereum/unsubscribeAddressBalance",
         "deprecated": false,
@@ -368,6 +534,172 @@
                         "description": "Any Ethereum address"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ethereum/subscribeToNewBlocks": {
+      "post": {
+        "operationId": "ethereum/subscribeToNewBlocks",
+        "deprecated": false,
+        "summary": "Subscribe to new blocks",
+        "description": "Subscribe to new blocks",
+        "tags": [
+          "ETHEREUM (ETH)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/subscribeModel"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for ETH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "subscribeToNewBlocks",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ethereum/unsubscribeFromNewBlocks": {
+      "post": {
+        "operationId": "ethereum/unsubscribeFromNewBlocks",
+        "deprecated": false,
+        "summary": "Unsubscribe from new blocks",
+        "description": "Unsubscribe from new blocks",
+        "tags": [
+          "ETHEREUM (ETH)"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "jsonrpc",
+                    "result"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                      "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/unsubscribeModel"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Method not supported for ETH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400Model"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "id",
+                  "jsonrpc",
+                  "params"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "unsubscribeFromNewBlocks",
+                    "description": "Method name"
+                  },
+                  "id": {
+                    "$ref": "#/components/schemas/JSONIDModel"
+                  },
+                  "jsonrpc": {
+                    "$ref": "#/components/schemas/JSONRPCVersionModel"
+                  },
+                  "params": {
+                    "title": "Parameters",
+                    "type": "object",
+                    "properties": {}
                   }
                 }
               }

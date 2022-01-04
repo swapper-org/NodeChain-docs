@@ -4,7 +4,7 @@
   "x-api-id": "nodechain-json-rpc",
   "info": {
     "title": "JSON-RPC NodeChain API",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Docs relating to the JSON-RPC API, including the connection to the APIs of the native nodes of each blockchain. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
   },
   "paths": {
@@ -134,19 +134,33 @@
                       "title": "Result",
                       "type": "object",
                       "required": [
-                        "confirmed",
-                        "unconfirmed"
+                        "address",
+                        "balance"
                       ],
                       "properties": {
-                        "confirmed": {
+                        "address": {
                           "type": "string",
-                          "description": "Balance confirmed",
-                          "default": 100000
+                          "description": "Bitcoin address"
                         },
-                        "unconfirmed": {
-                          "type": "string",
-                          "description": "Balance unconfirmed",
-                          "default": 0
+                        "balance": {
+                          "type": "object",
+                          "description": "Balance of Bitcoin the address",
+                          "properties": {
+                            "confirmed": {
+                              "type": "string",
+                              "description": "Balance confirmed",
+                              "default": 100000
+                            },
+                            "unconfirmed": {
+                              "type": "string",
+                              "description": "Balance unconfirmed",
+                              "default": 0
+                            }
+                          },
+                          "required": [
+                            "confirmed",
+                            "unconfirmed"
+                          ]
                         }
                       }
                     }
@@ -1612,19 +1626,33 @@
                       "title": "Result",
                       "type": "object",
                       "required": [
-                        "confirmed",
-                        "unconfirmed"
+                        "address",
+                        "balance"
                       ],
                       "properties": {
-                        "confirmed": {
+                        "address": {
                           "type": "string",
-                          "description": "Balance confirmed (WEI)",
-                          "default": 100000
+                          "description": "ETH address"
                         },
-                        "unconfirmed": {
-                          "type": "string",
-                          "description": "Balance unconfirmed (WEI)",
-                          "default": 0
+                        "balance": {
+                          "type": "object",
+                          "description": "Balance of the ETH address",
+                          "properties": {
+                            "confirmed": {
+                              "type": "string",
+                              "description": "Balance confirmed (WEI)",
+                              "default": 100000
+                            },
+                            "unconfirmed": {
+                              "type": "string",
+                              "description": "Balance unconfirmed (WEI)",
+                              "default": 0
+                            }
+                          },
+                          "required": [
+                            "confirmed",
+                            "unconfirmed"
+                          ]
                         }
                       }
                     }
@@ -2818,19 +2846,33 @@
                       "title": "Result",
                       "type": "object",
                       "required": [
-                        "confirmed",
-                        "unconfirmed"
+                        "address",
+                        "balance"
                       ],
                       "properties": {
-                        "confirmed": {
+                        "address": {
                           "type": "string",
-                          "description": "Balance confirmed",
-                          "default": 100000
+                          "description": "Bitcoin cash address"
                         },
-                        "unconfirmed": {
+                        "balance": {
                           "type": "string",
-                          "description": "Balance unconfirmed",
-                          "default": 0
+                          "description": "Balance of the bitcoin cash address",
+                          "properties": {
+                            "confirmed": {
+                              "type": "string",
+                              "description": "Balance confirmed",
+                              "default": 100000
+                            },
+                            "unconfirmed": {
+                              "type": "string",
+                              "description": "Balance unconfirmed",
+                              "default": 0
+                            }
+                          },
+                          "required": [
+                            "confirmed",
+                            "unconfirmed"
+                          ]
                         }
                       }
                     }
@@ -4558,6 +4600,78 @@
           "transactions"
         ],
         "properties": {
+          "number": {
+            "type": "string",
+            "description": "Block number or null if pending"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Block hash or null if pending"
+          },
+          "parentHash": {
+            "type": "string",
+            "description": "Parent block hash"
+          },
+          "mixHash": {
+            "type": "string",
+            "description": "Mix hash"
+          },
+          "nonce": {
+            "type": "string",
+            "description": "Proof-of-work hash or null if pending"
+          },
+          "sha3Uncles": {
+            "type": "string",
+            "description": "SHA3 of the uncles data in this block"
+          },
+          "logsBloom": {
+            "type": "string",
+            "description": "Logs bloom filter or null if pending"
+          },
+          "transactionsRoot": {
+            "type": "string",
+            "description": "Root og this block's transaction trie"
+          },
+          "stateRoot": {
+            "type": "string",
+            "description": "Root of this block's final state trie"
+          },
+          "receiptsRoot": {
+            "type": "string",
+            "description": "Root of this block's receipts trie"
+          },
+          "miner": {
+            "type": "string",
+            "description": "Address that received this block's mining rewards"
+          },
+          "difficulty": {
+            "type": "string",
+            "description": "Difficulty gor this block"
+          },
+          "totalDifficulty": {
+            "type": "string",
+            "description": "Total difficulty of the chain until this block"
+          },
+          "extraData": {
+            "type": "string",
+            "description": "Extra data field of this block"
+          },
+          "size": {
+            "type": "string",
+            "description": "Size of this block in bytes"
+          },
+          "gasLimit": {
+            "type": "string",
+            "description": "Maximun gas allowed in this block"
+          },
+          "gasUsed": {
+            "type": "string",
+            "description": "Total used fas by all transactions in this block"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Unix timestamp of when this block was colated"
+          },
           "transactions": {
             "type": "array",
             "items": {
@@ -4631,6 +4745,84 @@
                 "value": {
                   "type": "string",
                   "description": "value transferred in Wei (Hex)",
+                  "default": "0xf3dbb76162000"
+                }
+              }
+            }
+          },
+          "uncles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "blockHash": {
+                  "type": "string",
+                  "description": "Hash of block containing this transaction or null if pending",
+                  "default": "0x1d59ff54b1eb26b013ce3cb5fc9dab3705b415a67127a003c3e61eb445bb8df2"
+                },
+                "blockNumber": {
+                  "type": "string",
+                  "description": "Number of block containing this transaction or null if pending",
+                  "default": "0x5daf3b"
+                },
+                "from": {
+                  "type": "string",
+                  "description": "Transaction sender",
+                  "default": "0xa7d9ddbe1f17865597fbd27ec712455208b6b76d"
+                },
+                "gas": {
+                  "type": "string",
+                  "description": "Gas provided for transaction execution (Hex)",
+                  "default": "0xc350"
+                },
+                "gasPrice": {
+                  "type": "string",
+                  "description": "Price in Wei of each gas used (Hex)",
+                  "default": "0x4a817c800"
+                },
+                "hash": {
+                  "type": "string",
+                  "description": "Hash of this transaction",
+                  "default": "0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944b"
+                },
+                "input": {
+                  "type": "string",
+                  "description": "Contract code or a hashed method call",
+                  "default": "0x68656c6c6f21"
+                },
+                "nonce": {
+                  "type": "string",
+                  "description": "Unique number identifying this transaction (Hex)",
+                  "default": "0x15"
+                },
+                "r": {
+                  "type": "string",
+                  "description": "ECDSA signature r",
+                  "default": "0x1b5e176d927f8e9ab405058b2d2457392da3e20f328b16ddabcebc33eaac5fea"
+                },
+                "s": {
+                  "type": "string",
+                  "description": "ECDSA signature s",
+                  "default": "0x4ba69724e8f69de52f0125ad8b3c5c2cef33019bac3249e2c0a2192766d1721c"
+                },
+                "to": {
+                  "type": "string",
+                  "description": "Transaction recipient or null if deploying a contract",
+                  "default": "0xf02c1c8e6114b1dbe8937a39260b5b0a374432bb"
+                },
+                "transactionIndex": {
+                  "type": "string",
+                  "description": "Index of this transaction in the block or null if pending (Hex)",
+                  "default": "0x41"
+                },
+                "v": {
+                  "type": "string",
+                  "description": "ECDSA recovery id (Hex)",
+                  "default": "0x25"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value transferred in Wei (Hex)",
                   "default": "0xf3dbb76162000"
                 }
               }
