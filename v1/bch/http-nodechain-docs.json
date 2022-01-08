@@ -1,7 +1,7 @@
 {
     "x-send-defaults": true,
     "openapi": "3.0.0",
-    "x-api-id": "nodechain-http",
+    "x-api-id": "bch-http-nodechain",
     "info": {
         "title": "BCH HTTP NodeChain API",
         "version": "1.0.0",
@@ -22,7 +22,7 @@
                 "summary": "Return the balance of any address",
                 "description": "Return the balance of any address",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -30,7 +30,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressBalanceRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
                             }
                         }
                     }
@@ -41,7 +41,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
                                 }
                             }
                         }
@@ -55,7 +55,7 @@
                 "summary": "Return the balance of an array of addresses",
                 "description": "Return the balance of an array of addresses",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -63,7 +63,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressesBalanceRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
                             }
                         }
                     }
@@ -74,7 +74,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
                                 }
                             }
                         }
@@ -88,7 +88,7 @@
                 "summary": "Return the transaction history of any address",
                 "description": "Return the transaction history of any address",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -96,7 +96,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressHistoryRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryRequestModel"
                             }
                         }
                     }
@@ -107,7 +107,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressHistoryResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryResponseModel"
                                 }
                             }
                         }
@@ -121,7 +121,7 @@
                 "description": "Returns latest block hash and index",
                 "summary": "Returns latest block hash and index",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "responses": {
@@ -130,7 +130,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetHeightResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
                                 }
                             }
                         }
@@ -144,7 +144,7 @@
                 "description": "Returns the information of any block giving its hash",
                 "summary": "Returns the information of any block giving its hash",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -152,7 +152,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetBlockByHashRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
                             }
                         }
                     }
@@ -163,7 +163,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetBlockByHashResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
                                 }
                             }
                         }
@@ -177,7 +177,7 @@
                 "description": "Returns the information of any block giving its height",
                 "summary": "Returns the information of any block giving its height",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -185,7 +185,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetBlockByNumberRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
                             }
                         }
                     }
@@ -196,7 +196,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetBlockByNumberResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
                                 }
                             }
                         }
@@ -210,7 +210,7 @@
                 "summary": "Returns if blockchain is syncing",
                 "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "responses": {
@@ -219,7 +219,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/SyncingResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
                                 }
                             }
                         }
@@ -233,14 +233,14 @@
                 "summary": "Returns the information of any transaction",
                 "description": "Returns the information of any transaction, giving it transaction hash",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
                             }
                         }
                     }
@@ -251,7 +251,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
                                 }
                             }
                         }
@@ -265,14 +265,14 @@
                 "summary": "Watch an address. Everytime the address changes, a http POST is sent to the URL.",
                 "description": "Watch an address. Everytime the address changes, a http POST is sent to the URL.",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/NotifyRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/NotifyRequestModel"
                             }
                         }
                     }
@@ -283,7 +283,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/NotifyResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/NotifyResponseModel"
                                 }
                             }
                         }
@@ -297,14 +297,14 @@
                 "summary": "Returns the information of any transaction",
                 "description": "Returns the information of any transaction, giving it transaction hash",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionCountRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
                             }
                         }
                     }
@@ -315,7 +315,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionCountResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
                                 }
                             }
                         }
@@ -329,14 +329,14 @@
                 "summary": "Estimate fee by confirmations",
                 "description": "Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within \"confirmations\" blocks if possible and return the number of blocks for which the estimate is valid.",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetFeePerByteRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetFeePerByteRequestModel"
                             }
                         }
                     }
@@ -347,7 +347,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetFeePerByteResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetFeePerByteResponseModel"
                                 }
                             }
                         }
@@ -361,7 +361,7 @@
                 "description": "Returns the UTXO list of any address",
                 "summary": "Returns the UTXO list of any address",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "parameters": [],
@@ -369,7 +369,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressUnspentRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentRequestModel"
                             }
                         }
                     }
@@ -380,7 +380,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressUnspentResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentResponseModel"
                                 }
                             }
                         }
@@ -394,14 +394,14 @@
                 "summary": "Returns raw schema of any transaction",
                 "description": "Returns the transaction in raw format (hex)",
                 "tags": [
-                    "BITCOIN (BCH)"
+                    "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionHexRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionHexRequestModel"
                             }
                         }
                     }
@@ -412,7 +412,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionHexResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionHexResponseModel"
                                 }
                             }
                         }
