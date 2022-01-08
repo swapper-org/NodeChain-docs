@@ -1,7 +1,7 @@
 {
     "x-send-defaults": true,
     "openapi": "3.0.0",
-    "x-api-id": "nodechain-eth-http",
+    "x-api-id": "eth-http-nodechain",
     "x-headers": [],
     "x-explorer-enabled": true,
     "x-proxy-enabled": true,
@@ -31,7 +31,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressBalanceRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
                             }
                         }
                     }
@@ -42,7 +42,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
                                 }
                             }
                         }
@@ -64,7 +64,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressesBalanceRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
                             }
                         }
                     }
@@ -75,7 +75,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
                                 }
                             }
                         }
@@ -98,7 +98,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetHeightResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
                                 }
                             }
                         }
@@ -121,7 +121,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetGasPriceResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetGasPriceResponseModel"
                                 }
                             }
                         }
@@ -144,7 +144,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/SyncingResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
                                 }
                             }
                         }
@@ -166,7 +166,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/BroadcastTransactionRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionRequestModel"
                             }
                         }
                     }
@@ -177,7 +177,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/BroadcastTransactionResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionResponseModel"
                                 }
                             }
                         }
@@ -198,7 +198,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/EstimateGasRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/EstimateGasRequestModel"
                             }
                         }
                     }
@@ -209,7 +209,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/EstimateGasResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/EstimateGasResponseModel"
                                 }
                             }
                         }
@@ -230,7 +230,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetBlockByHashRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
                             }
                         }
                     }
@@ -241,7 +241,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetBlockByHashResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
                                 }
                             }
                         }
@@ -262,7 +262,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetBlockByNumberRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
                             }
                         }
                     }
@@ -273,7 +273,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetBlockByNumberResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
                                 }
                             }
                         }
@@ -294,7 +294,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionCountRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
                             }
                         }
                     }
@@ -305,7 +305,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionCountResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
                                 }
                             }
                         }
@@ -326,7 +326,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionReceiptRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptRequestModel"
                             }
                         }
                     }
@@ -337,7 +337,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionReceiptResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptResponseModel"
                                 }
                             }
                         }
@@ -358,7 +358,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetTransactionRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
                             }
                         }
                     }
@@ -369,7 +369,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./components.json#/components/schemas/GetTransactionResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
                                 }
                             }
                         }
