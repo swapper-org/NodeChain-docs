@@ -7,6 +7,14 @@
         "version": "1.0.0",
         "description": "Docs relating to the BTC HTTP API, including the connection to the API of the native node. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
     },
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+      "curl",
+      "python"
+    ],
     "paths": {
         "/getAddressBalance": {
             "post": {
@@ -55,7 +63,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                "$ref": "./components.json#/components/schemas/GetAddressesBalanceRequestModel"
                             }
                         }
                     }
