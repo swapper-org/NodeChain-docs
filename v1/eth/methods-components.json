@@ -1,0 +1,345 @@
+{
+    "components": {
+        "schemas": {
+            "GetAddressBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressBalanceResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/BalanceModel"
+            },
+            "GetAddressesBalanceRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "description": "Ethereum address",
+                            "type": "string",
+                            "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesBalanceResponseModel": {
+                "type": "array",
+                "items": {
+                    "$ref": "./model-components.json#/components/schemas/BalanceModel"
+                }
+            },
+            "GetHeightRequestModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "GetHeightResponseModel": {
+                "type": "object",
+                "properties": {
+                    "latestBlockHash": {
+                        "description": "Latest block hash",
+                        "type": "string",
+                        "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+                    },
+                    "latestBlockIndex": {
+                        "description": "Ethereum block height",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "required": [
+                    "latestBlockHash",
+                    "latestBlockIndex"
+                ]
+            },
+            "GetGasPriceRequestModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "GetGasPriceResponseModel": {
+                "type": "object",
+                "properties": {
+                    "gasPrice": {
+                        "$ref": "./model-components.json#/components/schemas/GasPriceModel"
+                    }
+                },
+                "required": [
+                    "gasPrice"
+                ]
+            },
+            "SyncingRequestModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "SyncingResponseModel": {
+                "type": "object",
+                "properties": {
+                    "syncing": {
+                        "type": "boolean",
+                        "description": "False if not syncing or fully synchronized",
+                        "example": false
+                    },
+                    "syncPercentage": {
+                        "type": "string",
+                        "description": "Percentage of Synchonization",
+                        "example": "6.905658629231632%"
+                    },
+                    "currentBlockIndex": {
+                        "description": "Ethereum block height",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "latestBlockIndex": {
+                        "description": "Ethereum block height",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "required": [
+                    "syncing"
+                ]
+            },
+            "BroadcastTransactionRequestModel": {
+                "type": "object",
+                "properties": {
+                    "rawTransaction": {
+                        "description": "The transaction hash in hex",
+                        "type": "string",
+                        "example": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+                    }
+                },
+                "required": [
+                    "rawTransaction"
+                ]
+            },
+            "BroadcastTransactionResponseModel": {
+                "type": "object",
+                "properties": {
+                    "broadcasted": {
+                        "description": "The transaction hash, or the zero hash if the transaction is not yet available",
+                        "type": "string",
+                        "example": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
+                    }
+                },
+                "required": [
+                    "broadcasted"
+                ]
+            },
+            "EstimateGasRequestModel": {
+                "type": "object",
+                "properties": {
+                    "tx": {
+                        "allOf": [
+                            {
+                                "description": "Ethereum transaction call"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/TransactionCallModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "tx"
+                ]
+            },
+            "EstimateGasResponseModel": {
+                "type": "object",
+                "properties": {
+                    "estimatedGas": {
+                        "description": "Estimated gas for the transaction execution",
+                        "type": "string",
+                        "example": "0x79ccd3"
+                    }
+                },
+                "required": [
+                    "estimatedGas"
+                ]
+            },
+            "GetBlockByHashRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockHash": {
+                        "description": "A string representing the hash (32 bytes) of a block",
+                        "type": "string",
+                        "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+                    }
+                },
+                "required": [
+                    "blockHash"
+                ]
+            },
+            "GetBlockByHashResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/BlockModel"
+            },
+            "GetBlockByNumberRequestModel": {
+                "type": "object",
+                "properties": {
+                    "blockNumber": {
+                        "$ref": "./model-components.json#/components/schemas/BlockHeightModel"
+                    }
+                },
+                "required": [
+                    "blockNumber"
+                ]
+            },
+            "GetBlockByNumberResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/BlockModel"
+            },
+            "GetTransactionCountRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    },
+                    "pending": {
+                        "description": "True to get pending blocks",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "address",
+                    "pending"
+                ]
+            },
+            "GetTransactionCountResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactionCount": {
+                        "description": "Number of transactions",
+                        "type": "integer",
+                        "example": 0
+                    }
+                },
+                "required": [
+                    "transactionCount"
+                ]
+            },
+            "GetTransactionReceiptRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionReceiptResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/TransactionReceiptModel"
+            },
+            "GetTransactionRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHash": {
+                        "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transaction": {
+                        "$ref": "./model-components.json#/components/schemas/TransactionModel"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "description": "Ethereum address",
+                                    "type": "string",
+                                    "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                },
+                                "amount": {
+                                    "description": "Value in WEI",
+                                    "type": "integer",
+                                    "example": 1000000000000000000
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "description": "Ethereum address",
+                                    "type": "string",
+                                    "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                },
+                                "amount": {
+                                    "description": "Value in WEI",
+                                    "type": "integer",
+                                    "example": 1000000000000000000
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "SubscribeToAddressBalanceRequestModel": {
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "SubscribeToAddressBalanceResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/SubscriptionModel"
+            },
+            "UnsubscribeFromAddressBalanceRequestModel": {
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "UnsubscribeFromAddressBalanceResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/UnsubscriptionModel"
+            },
+            "SubscribeToNewBlocksRequestModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "SubscribeToNewBlocksResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/SubscriptionModel"
+            },
+            "UnsubscribeFromNewBlocksRequestModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "UnsubscribeFromNewBlocksResponseModel": {
+                "$ref": "./model-components.json#/components/schemas/UnsubscriptionModel"
+            }
+        }
+    }
+}

@@ -1,0 +1,696 @@
+{
+    "x-send-defaults": true,
+    "openapi": "3.0.0",
+    "x-api-id": "eth-http-nodechain",
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+        "curl",
+        "python"
+    ],
+    "tags": [],
+    "info": {
+        "title": "ETH RPC NodeChain API",
+        "version": "1.0.0",
+        "description": "Docs relating to the ETH RPC API, including the connection to the API of the native node. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
+    },
+    "paths": {
+        "/getAddressBalance": {
+            "post": {
+                "operationId": "/getAddressBalance",
+                "summary": "Return the balance of any address",
+                "description": "Return the balance of any address",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesBalance": {
+            "post": {
+                "operationId": "/getAddressesBalance",
+                "summary": "Return the balance of an array of addresses",
+                "description": "Return the balance of an array of addresses",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getHeight": {
+            "post": {
+                "operationId": "/getHeight",
+                "description": "Returns latest block hash and index",
+                "summary": "Returns latest block hash and index",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getHeight"
+                                                ],
+                                                "example": "getHeight"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetHeightRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getGasPrice": {
+            "post": {
+                "operationId": "/getGasPrice",
+                "summary": "Returns the current price per gas in wei.",
+                "description": "Returns the current price per gas in wei.",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getHeight"
+                                                ],
+                                                "example": "getHeight"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetGasPriceRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetGasPriceResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/syncing": {
+            "post": {
+                "operationId": "/syncing",
+                "summary": "Returns if blockchain is syncing",
+                "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "syncing"
+                                                ],
+                                                "example": "syncing"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/SyncingRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/broadcastTransaction": {
+            "post": {
+                "operationId": "/broadcastTransaction",
+                "summary": "Broadcast a transaction to the network",
+                "description": "Broadcast a transaction to the network",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/estimateGas": {
+            "post": {
+                "operationId": "/estimateGas",
+                "summary": "Generates and returns an estimate of how much gas is necessary to allow the transaction to complete",
+                "description": "The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/EstimateGasRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/EstimateGasResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getBlockByHash": {
+            "post": {
+                "operationId": "/getBlockByHash",
+                "description": "Returns the information of any block giving its hash",
+                "summary": "Returns the information of any block giving its hash",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getBlockByNumber": {
+            "post": {
+                "operationId": "/getBlockByNumber",
+                "description": "Returns the information of any block giving its height",
+                "summary": "Returns the information of any block giving its height",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactionCount": {
+            "post": {
+                "operationId": "/getTransactionCount",
+                "summary": "Returns the number of success/pending transactions of any address",
+                "description": "Returns the number of success/pending transactions of any address",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactionReceipt": {
+            "post": {
+                "operationId": "/getTransactionReceipt",
+                "summary": "Returns the receipt of a transaction by transaction hash",
+                "description": "Returns the receipt of a transaction by transaction hash",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransaction": {
+            "post": {
+                "operationId": "/getTransaction",
+                "deprecated": false,
+                "summary": "Returns the receipt of a transaction by transaction hash",
+                "description": "Returns the receipt of a transaction by transaction hash",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,297 @@
+{
+    "x-send-defaults": true,
+    "openapi": "3.0.0",
+    "x-api-id": "eth-real-time-nodechain",
+    "info": {
+        "title": "Real Time ETH NodeChain API",
+        "version": "1.0.1",
+        "description": "Docs relating to the WebSocket API for ETH, including the connection to the APIs of the native node. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
+    },
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+        "curl",
+        "python"
+    ],
+    "tags": [],
+    "paths": {
+        "/subscribeToAddressBalance": {
+            "post": {
+                "operationId": "/subscribeToAddressBalance",
+                "summary": "Subscribe to balance changes for any Ethereum address",
+                "description": "Subscribe to balance changes for any Ethereum address",
+                "tags": [
+                    "BITCOIN (ETH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToAddressBalance"
+                                                ],
+                                                "example": "subscribeToAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/unsubscribeFromAddressBalance": {
+            "post": {
+                "operationId": "/unsubscribeFromAddressBalance",
+                "deprecated": false,
+                "summary": "Unsubscribe to balance changes for any address",
+                "description": "Unsubscribe to balance changes for any address",
+                "tags": [
+                    "BITCOIN (ETH)"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "unsubscribeFromAddressBalance"
+                                                ],
+                                                "example": "unsubscribeFromAddressBalance"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromAddressBalanceResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/subscribeToNewBlocks": {
+            "post": {
+                "operationId": "/subscribeToNewBlocks",
+                "summary": "Subscribe to new blocks",
+                "description": "Subscribe to new blocks",
+                "tags": [
+                    "BITCOIN (ETH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "subscribeToNewBlocks"
+                                                ],
+                                                "example": "subscribeToNewBlocks"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/unsubscribeFromNewBlocks": {
+            "post": {
+                "operationId": "/unsubscribeFromNewBlocks",
+                "deprecated": false,
+                "summary": "Subscribe from new blocks",
+                "description": "Subscribe from new blocks",
+                "tags": [
+                    "BITCOIN (ETH)"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "unsubscribeFromNewBlocks"
+                                                ],
+                                                "example": "unsubscribeFromNewBlocks"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
