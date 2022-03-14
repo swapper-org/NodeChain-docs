@@ -16,12 +16,12 @@
                             "confirmed": {
                                 "description": "Balance confirmed of Ethereum address",
                                 "type": "string",
-                                "example": 10000
+                                "example": "10000"
                             },
                             "unconfirmed": {
                                 "description": "Balance unconfirmed of Ethereum address",
                                 "type": "string",
-                                "example": 0
+                                "example": "0"
                             }
                         },
                         "required": [
@@ -43,7 +43,7 @@
             "GasPriceModel": {
                 "type": "string",
                 "description": "Ethereum gas price",
-                "example": "0x79ccd3"
+                "example": "7982291"
             },
             "TransactionCallModel": {
                 "type": "object",

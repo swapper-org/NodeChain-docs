@@ -1,0 +1,32 @@
+{
+    "components": {
+        "schemas": {
+            "GetVersionResponseModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Connector version",
+                        "type": "string",
+                        "example": "1.1.7"
+                    }
+                },
+                "required": [
+                    "version"
+                ]
+            },
+            "GetStatusResponseModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Connector status",
+                        "type": "string",
+                        "example": "Connector is running"
+                    }
+                },
+                "required": [
+                    "version"
+                ]
+            }
+        }
+    }
+}

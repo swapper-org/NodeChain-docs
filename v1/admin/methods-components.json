@@ -1,0 +1,208 @@
+{
+    "components": {
+        "schemas": {
+            "AddCoinRequestModel": {
+                "type": "object",
+                "properties": {
+                    "coin": {
+                        "description": "Currency for which you want to enable an API in the connector",
+                        "type": "string",
+                        "example": "btc"
+                    },
+                    "network": {
+                        "description": "Network on which you want to enable the specified currency",
+                        "type": "string",
+                        "example": "testnet"
+                    },
+                    "config": {
+                        "oneOf": [
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BtcConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/EthConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BchConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/LunaConfigurationModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "coin",
+                    "network",
+                    "config"
+                ]
+            },
+            "AddCoinResponseModel": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "description": "Response status",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "description": "Response description",
+                        "type": "string",
+                        "example": "testnt network added for currency btc"
+                    }
+                },
+                "required": [
+                    "success",
+                    "message"
+                ]
+            },
+            "GetCoinRequestModel": {
+                "type": "object",
+                "properties": {
+                    "coin": {
+                        "description": "Currency from which the configuration parameters are to be returned",
+                        "type": "string",
+                        "example": "btc"
+                    },
+                    "network": {
+                        "description": "Network of the currency from which the configuration parameters are to be returned",
+                        "type": "string",
+                        "example": "testnet"
+                    }
+                },
+                "required": [
+                    "coin",
+                    "network"
+                ]
+            },
+            "GetCoinResponseModel": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "description": "Response status",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "description": "Response description",
+                        "type": "string",
+                        "example": "testnt network added for currency btc"
+                    },
+                    "config": {
+                        "oneOf": [
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BtcConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/EthConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BchConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/LunaConfigurationModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "success",
+                    "message"
+                ]
+            },
+            "UpdateCoinRequestModel": {
+                "type": "object",
+                "properties": {
+                    "coin": {
+                        "description": "Currency for which you want to update the configuration parameters",
+                        "type": "string",
+                        "example": "btc"
+                    },
+                    "network": {
+                        "description": "Network on which you want to enable the specified currency",
+                        "type": "string",
+                        "example": "testnet"
+                    },
+                    "config": {
+                        "oneOf": [
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BtcConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/EthConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/BchConfigurationModel"
+                            },
+                            {
+                                "$ref": "./model-components.json#/components/schemas/LunaConfigurationModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "coin",
+                    "network",
+                    "config"
+                ]
+            },
+            "UpdateCoinResponseModel": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "description": "Response status",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "description": "Response description",
+                        "type": "string",
+                        "example": "Configuration for testnet network for currency btc updated successfully"
+                    }
+                },
+                "required": [
+                    "success",
+                    "message"
+                ]
+            },
+            "RemoveCoinRequestModel": {
+                "type": "object",
+                "properties": {
+                    "coin": {
+                        "description": "Currency for which you want to disable an API in the connector",
+                        "type": "string",
+                        "example": "btc"
+                    },
+                    "network": {
+                        "description": "Network on which you want to disable the specified currency",
+                        "type": "string",
+                        "example": "testnet"
+                    }
+                },
+                "required": [
+                    "coin",
+                    "network"
+                ]
+            },
+            "RemoveCoinResponseModel": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "description": "Response status",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "description": "Response description",
+                        "type": "string",
+                        "example": "testnet network removed for currency btc"
+                    }
+                },
+                "required": [
+                    "success",
+                    "message"
+                ]
+            }
+        }
+    }
+}

@@ -45,98 +45,114 @@
             },
             "ConfirmationsModel": {
                 "description": "Number of confirmations, or -1 if the block is not on the main chain",
-                "type": "integer",
-                "example": 5
+                "type": "string",
+                "example": "5"
             },
             "BlockModel": {
-                "description": "Bitcoin block",
-                "type": "object",
-                "properties": {
-                    "hash": {
-                        "description": "Block hash",
-                        "type": "string",
-                        "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
-                    },
-                    "previousblockhash": {
-                        "description": "The hash of the previous block",
-                        "type": "string",
-                        "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
-                    },
-                    "nextblockhash": {
-                        "description": "The hash of the next block",
-                        "type": "string",
-                        "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
-                    },
-                    "height": {
-                        "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "nonce": {
-                        "description": "Nonce",
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "nTx": {
-                        "description": "Number of transactions in the block",
-                        "type": "integer",
-                        "example": 123
-                    },
-                    "confirmations": {
-                        "$ref": "#/components/schemas/ConfirmationsModel"
-                    },
-                    "weight": {
-                        "description": "Block weight as defined in BIP 141",
-                        "type": "integer",
-                        "example": 13123
-                    },
-                    "version": {
-                        "description": "Block version",
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "versionHex": {
-                        "description": "Block version in hex",
-                        "type": "string",
-                        "example": "0x1"
-                    },
-                    "strippedsize": {
-                        "description": "The block size excluding witness data",
-                        "type": "integer",
-                        "example": 54354
-                    },
-                    "bits": {
-                        "description": "The bits (HEX)",
-                        "type": "string",
-                        "example": "207fffff"
-                    },
-                    "difficulty": {
-                        "description": "Difficulty",
-                        "type": "number",
-                        "example": 4.656542373906925e-10
-                    },
-                    "chainwork": {
-                        "description": "Expected number of hashes required to produce the chain up to this block (in hex)",
-                        "type": "string",
-                        "example": "0000000000000000000000000000000000000000000000000000000000000e9e"
-                    },
-                    "time": {
-                        "description": "Block time expressed in UNIX epoch time",
-                        "type": "integer",
-                        "example": 1641234640
-                    },
-                    "mediantime": {
-                        "description": "Median block time expressed in UNIX epoch time",
-                        "type": "integer",
-                        "example": 1641234640
-                    },
-                    "txs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/TransactionModel"
+                "oneOf": [
+                    {
+                        "description": "Bitcoin block",
+                        "type": "object",
+                        "properties": {
+                            "hash": {
+                                "description": "Block hash",
+                                "type": "string",
+                                "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
+                            },
+                            "previousblockhash": {
+                                "description": "The hash of the previous block",
+                                "type": "string",
+                                "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
+                            },
+                            "nextblockhash": {
+                                "description": "The hash of the next block",
+                                "type": "string",
+                                "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
+                            },
+                            "height": {
+                                "description": "Bitcoin block height",
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nonce": {
+                                "description": "Nonce",
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "nTx": {
+                                "description": "Number of transactions in the block",
+                                "type": "integer",
+                                "example": 123
+                            },
+                            "confirmations": {
+                                "$ref": "#/components/schemas/ConfirmationsModel"
+                            },
+                            "weight": {
+                                "description": "Block weight as defined in BIP 141",
+                                "type": "integer",
+                                "example": 13123
+                            },
+                            "version": {
+                                "description": "Block version",
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "versionHex": {
+                                "description": "Block version in hex",
+                                "type": "string",
+                                "example": "0x1"
+                            },
+                            "strippedsize": {
+                                "description": "The block size excluding witness data",
+                                "type": "integer",
+                                "example": 54354
+                            },
+                            "bits": {
+                                "description": "The bits (HEX)",
+                                "type": "string",
+                                "example": "207fffff"
+                            },
+                            "difficulty": {
+                                "description": "Difficulty",
+                                "type": "number",
+                                "example": 4.656542373906925e-10
+                            },
+                            "chainwork": {
+                                "description": "Expected number of hashes required to produce the chain up to this block (in hex)",
+                                "type": "string",
+                                "example": "0000000000000000000000000000000000000000000000000000000000000e9e"
+                            },
+                            "time": {
+                                "description": "Block time expressed in UNIX epoch time",
+                                "type": "integer",
+                                "example": 1641234640
+                            },
+                            "mediantime": {
+                                "description": "Median block time expressed in UNIX epoch time",
+                                "type": "integer",
+                                "example": 1641234640
+                            },
+                            "txs": {
+                                "type": "array",
+                                "items": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/TransactionModel"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/TransactionHashModel"
+                                        }
+                                    ]
+                                }
+                            }
                         }
+                    },
+                    {
+                        "description": "Bitcoin block, hex-encoded data for block 'hash'",
+                        "type": "string",
+                        "example": "0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4adae5494dffff7f20020000000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000"
                     }
-                }
+                ]
             },
             "TransactionIdModel": {
                 "description": "Transaction Id",
@@ -193,8 +209,8 @@
             },
             "ValueModel": {
                 "description": "The value in BTC",
-                "type": "integer",
-                "example": 100000
+                "type": "string",
+                "example": "100000"
             },
             "TransactionModel": {
                 "description": "Bitcoin transaction",
@@ -314,8 +330,8 @@
                     },
                     "blockHeight": {
                         "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     }
                 },
                 "required": [

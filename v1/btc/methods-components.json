@@ -47,9 +47,56 @@
                 ]
             },
             "GetAddressHistoryResponseModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "model-components.json#/components/schemas/AddressModel"
+                    },
+                    "txHashes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                        }
+                    }
+                },
+                "required": [
+                    "address",
+                    "txHashes"
+                ]
+            },
+            "GetAddressesHistoryRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "model-components.json#/components/schemas/AddressModel"
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesHistoryResponseModel": {
                 "type": "array",
                 "items": {
-                    "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "$ref": "model-components.json#/components/schemas/AddressModel"
+                        },
+                        "txHashes": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                            }
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "txHashes"
+                    ]
                 }
             },
             "GetHeightRequestModel": {
@@ -66,8 +113,8 @@
                     },
                     "latestBlockIndex": {
                         "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     }
                 },
                 "required": [
@@ -82,6 +129,17 @@
                         "description": "Bitcoin block hash",
                         "type": "string",
                         "example": "217ba61bc3921764a218f4607a8905108d2dfa4bb8e6e10af61d06e279fa069d"
+                    },
+                    "verbosity": {
+                        "description": "Level of information returned",
+                        "type": "integer",
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "default": 2,
+                        "example": 0
                     }
                 },
                 "required": [
@@ -98,6 +156,17 @@
                         "description": "Bitcoin block height",
                         "type": "integer",
                         "example": 1
+                    },
+                    "verbosity": {
+                        "description": "Level of information returned",
+                        "type": "integer",
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "default": 2,
+                        "example": 0
                     }
                 },
                 "required": [
@@ -126,13 +195,13 @@
                     },
                     "currentBlockIndex": {
                         "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     },
                     "latestBlockIndex": {
                         "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     }
                 },
                 "required": [
@@ -151,7 +220,151 @@
                 ]
             },
             "GetTransactionResponseModel": {
-                "$ref": "model-components.json#/components/schemas/TransactionModel"
+                "type": "object",
+                "properties": {
+                    "transaction": {
+                        "type": "object",
+                        "properties": {
+                            "txId": {
+                                "$ref": "model-components.json#/components/schemas/TransactionIdModel"
+                            },
+                            "txHash": {
+                                "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                            },
+                            "blockNumber": {
+                                "description": "Block which contains the transaction. Null if transaction is unconfirmed",
+                                "type": "string",
+                                "example": "3"
+                            },
+                            "fee": {
+                                "description": "Transaction fee",
+                                "type": "string",
+                                "example": "1000"
+                            },
+                            "inputs": {
+                                "description": "Transaction inputs",
+                                "type": "object",
+                                "properties": {
+                                    "address": {
+                                        "oneOf": [
+                                            {
+                                                "$ref": "model-components.json#/components/schemas/AddressModel"
+                                            },
+                                            {
+                                                "description": "Null when is coinbase transaction",
+                                                "type": "object",
+                                                "value": null
+                                            }
+                                        ]
+                                    },
+                                    "amount": {
+                                        "description": "Value sent from address in  the transaction",
+                                        "type": "string",
+                                        "value": "10000"
+                                    }
+                                }
+                            },
+                            "outputs": {
+                                "type": "object",
+                                "properties": {
+                                    "address": {
+                                        "$ref": "model-components.json#/components/schemas/AddressModel"
+                                    },
+                                    "amount": {
+                                        "description": "Value sent to address in  the transaction",
+                                        "type": "string",
+                                        "value": "10000"
+                                    }
+                                }
+                            },
+                            "data": {
+                                "$ref": "model-components.json#/components/schemas/TransactionModel"
+                            }
+                        }
+                    }
+                }
+            },
+            "GetTransactionsRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHashes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                        }
+                    }
+                },
+                "required": [
+                    "txHash"
+                ]
+            },
+            "GetTransactionsResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "txId": {
+                                    "$ref": "model-components.json#/components/schemas/TransactionIdModel"
+                                },
+                                "txHash": {
+                                    "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                                },
+                                "blockNumber": {
+                                    "description": "Block which contains the transaction. Null if transaction is unconfirmed",
+                                    "type": "string",
+                                    "example": "3"
+                                },
+                                "fee": {
+                                    "description": "Transaction fee",
+                                    "type": "string",
+                                    "example": "1000"
+                                },
+                                "inputs": {
+                                    "description": "Transaction inputs",
+                                    "type": "object",
+                                    "properties": {
+                                        "address": {
+                                            "oneOf": [
+                                                {
+                                                    "$ref": "model-components.json#/components/schemas/AddressModel"
+                                                },
+                                                {
+                                                    "description": "Null when is coinbase transaction",
+                                                    "type": "object",
+                                                    "value": null
+                                                }
+                                            ]
+                                        },
+                                        "amount": {
+                                            "description": "Value sent from address in  the transaction",
+                                            "type": "string",
+                                            "value": "10000"
+                                        }
+                                    }
+                                },
+                                "outputs": {
+                                    "type": "object",
+                                    "properties": {
+                                        "address": {
+                                            "$ref": "model-components.json#/components/schemas/AddressModel"
+                                        },
+                                        "amount": {
+                                            "description": "Value sent to address in  the transaction",
+                                            "type": "string",
+                                            "value": "10000"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "$ref": "model-components.json#/components/schemas/TransactionModel"
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "NotifyRequestModel": {
                 "type": "object",
@@ -182,29 +395,87 @@
                     "success"
                 ]
             },
-            "GetTransactionCountRequestModel": {
+            "GetAddressTransactionCountRequestModel": {
                 "type": "object",
                 "properties": {
                     "address": {
                         "$ref": "model-components.json#/components/schemas/AddressModel"
+                    },
+                    "pending": {
+                        "description": "Get pending or confirmed transactions",
+                        "type": "boolean",
+                        "example": true
                     }
                 },
                 "required": [
-                    "address"
+                    "address",
+                    "pending"
                 ]
             },
-            "GetTransactionCountResponseModel": {
+            "GetAddressTransactionCountResponseModel": {
                 "type": "object",
                 "properties": {
+                    "address": {
+                        "$ref": "model-components.json#/components/schemas/AddressModel"
+                    },
                     "transactionCount": {
-                        "description": "Number of pending transactions",
-                        "type": "integer",
-                        "example": 12
+                        "description": "Number of pending or confirmed transactions",
+                        "type": "string",
+                        "example": "12"
                     }
                 },
                 "required": [
+                    "address",
                     "transactionCount"
                 ]
+            },
+            "GetAddressesTransactionCountRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "$ref": "model-components.json#/components/schemas/AddressModel"
+                                },
+                                "pending": {
+                                    "description": "Get pending or confirmed transactions",
+                                    "type": "boolean",
+                                    "example": true
+                                }
+                            },
+                            "required": [
+                                "address",
+                                "pending"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesTransactionCountResponseModel": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "$ref": "model-components.json#/components/schemas/AddressModel"
+                        },
+                        "transactionCount": {
+                            "description": "Number of pending or confirmed transactions",
+                            "type": "string",
+                            "example": "12"
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "transactionCount"
+                    ]
+                }
             },
             "GetFeePerByteRequestModel": {
                 "type": "object",
@@ -269,11 +540,69 @@
                     ]
                 }
             },
+            "GetAddressesUnspentRequestModel": {
+                "type": "array",
+                "items": {
+                    "$ref": "model-components.json#/components/schemas/AddressModel"
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressesUnspentResponseModel": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "$ref": "model-components.json#/components/schemas/AddressModel"
+                        },
+                        "outputs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "txHash": {
+                                        "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                                    },
+                                    "vout": {
+                                        "description": "Index number for an output in the transaction.",
+                                        "type": "string",
+                                        "example": "0"
+                                    },
+                                    "status": {
+                                        "$ref": "model-components.json#/components/schemas/UTXOStatusModel"
+                                    },
+                                    "value": {
+                                        "$ref": "model-components.json#/components/schemas/ValueModel"
+                                    }
+                                },
+                                "required": [
+                                    "txHash",
+                                    "vout",
+                                    "status",
+                                    "value"
+                                ]
+                            }
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "outputs"
+                    ]
+                }
+            },
             "GetTransactionHexRequestModel": {
                 "type": "object",
                 "properties": {
                     "txHash": {
                         "$ref": "model-components.json#/components/schemas/TransactionHashModel"
+                    },
+                    "verbosity": {
+                        "description": "Level of information returned",
+                        "type": "boolean",
+                        "example": false,
+                        "default": false
                     }
                 },
                 "required": [
@@ -284,9 +613,42 @@
                 "type": "object",
                 "properties": {
                     "rawTransaction": {
+                        "oneOf": [
+                            {
+                                "description": "Raw transaction (Hex format)",
+                                "type": "string",
+                                "example": "01000000000101c0d72dcba53996705fff03465f23b594ec934c29a7645045abe07385a58470a101000000171600140e2c5153cf335a150df44013c4572cd52a70aa8bfdffffff020100000000000000165114391234a573b02814f03ff59673c86b68c2869537091839000000000017a914004863ca1a414c0a174b2666bf067c69524aabd4870247304402201cc95f4683cf0fc46923b1a7f78454adbd57150268ab4960efd3c7df6fc83e22022035917f815bfd80052812b8b1559d314f2459e5876abe9bf1b36f8d4e0dda6e0e012102c379336fce4796dc9bbaa953ef5003e070853b2bf53bdf00b9cfb83e3e1ef84f00000000"
+                            },
+                            {
+                                "$ref": "model-components.json#/components/schemas/TransactionModel"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "rawTransaction"
+                ]
+            },
+            "BroadcastRequestModel": {
+                "type": "object",
+                "properties": {
+                    "rawTransaction": {
                         "description": "Raw transaction (Hex format)",
                         "type": "string",
                         "example": "01000000000101c0d72dcba53996705fff03465f23b594ec934c29a7645045abe07385a58470a101000000171600140e2c5153cf335a150df44013c4572cd52a70aa8bfdffffff020100000000000000165114391234a573b02814f03ff59673c86b68c2869537091839000000000017a914004863ca1a414c0a174b2666bf067c69524aabd4870247304402201cc95f4683cf0fc46923b1a7f78454adbd57150268ab4960efd3c7df6fc83e22022035917f815bfd80052812b8b1559d314f2459e5876abe9bf1b36f8d4e0dda6e0e012102c379336fce4796dc9bbaa953ef5003e070853b2bf53bdf00b9cfb83e3e1ef84f00000000"
+                    }
+                },
+                "required": [
+                    "rawTransaction"
+                ]
+            },
+            "BroadcastResponseModel": {
+                "type": "object",
+                "properties": {
+                    "broadcasted": {
+                        "description": "The transaction hash in hex",
+                        "type": "string",
+                        "example": "b66d096bcb068888d4a6987870647ba9c9d2f1da9e360ddafc73efe1f26f2435"
                     }
                 },
                 "required": [

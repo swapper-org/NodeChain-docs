@@ -115,8 +115,41 @@
                 }
             }
         },
+        "/getAddressesHistory":{
+            "post": {
+                "operationId": "/getAddressesHistory",
+                "summary": "Return the transaction history of the given addresses",
+                "description": "Return the transaction history of the given addresses",
+                "tags": [
+                    "BITCOIN CASH (BCH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/getHeight": {
-            "get": {
+            "post": {
                 "operationId": "/getHeight",
                 "description": "Returns latest block hash and index",
                 "summary": "Returns latest block hash and index",
@@ -124,6 +157,15 @@
                     "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetHeightRequestModel"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "",
@@ -141,7 +183,7 @@
         "/getBlockByHash": {
             "post": {
                 "operationId": "/getBlockByHash",
-                "description": "Returns the information of any block giving its hash",
+                "description": "Returns the information of any block giving its hash. If verbosity is 0, it returns a string that is serialized, hex-encoded data for block hash. If verbosity is 1, it returns an object with information about the block. If verbosity is 2, it returns an Object with information about the block and each transaction",
                 "summary": "Returns the information of any block giving its hash",
                 "tags": [
                     "BITCOIN CASH (BCH)"
@@ -164,7 +206,7 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
-                                }
+                                } 
                             }
                         }
                     }
@@ -174,7 +216,7 @@
         "/getBlockByNumber": {
             "post": {
                 "operationId": "/getBlockByNumber",
-                "description": "Returns the information of any block giving its height",
+                "description": "Returns the information of any block giving its height. If verbosity is 0, it returns a string that is serialized, hex-encoded data for block hash. If verbosity is 1, it returns an object with information about the block. If verbosity is 2, it returns an Object with information about the block and each transaction",
                 "summary": "Returns the information of any block giving its height",
                 "tags": [
                     "BITCOIN CASH (BCH)"
@@ -205,7 +247,7 @@
             }
         },
         "/syncing": {
-            "get": {
+            "post": {
                 "operationId": "/syncing",
                 "summary": "Returns if blockchain is syncing",
                 "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
@@ -213,6 +255,15 @@
                     "BITCOIN CASH (BCH)"
                 ],
                 "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/SyncingRequestModel"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "",
@@ -231,7 +282,7 @@
             "post": {
                 "operationId": "/getTransaction",
                 "summary": "Returns the information of any transaction",
-                "description": "Returns the information of any transaction, giving it transaction hash",
+                "description": "Returns the information of any transaction, giving its transaction hash",
                 "tags": [
                     "BITCOIN CASH (BCH)"
                 ],
@@ -252,6 +303,38 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactions": {
+            "post": {
+                "operationId": "/getTransactions",
+                "summary": "Returns the information of an array of transactions",
+                "description": "Returns the information of an array of transaction, giving its transactions hash",
+                "tags": [
+                    "BITCOIN CASH (BCH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
                                 }
                             }
                         }
@@ -291,11 +374,11 @@
                 }
             }
         },
-        "/getTransactionCount": {
+        "/getAddressTransactionCount": {
             "post": {
-                "operationId": "/getTransactionCount",
-                "summary": "Returns the information of any transaction",
-                "description": "Returns the information of any transaction, giving it transaction hash",
+                "operationId": "/getAddressTransactionCount",
+                "summary": "Returns the number of pending or confirmed transactions an address has made",
+                "description": "Returns the number of pending or confirmed transactions an address has made",
                 "tags": [
                     "BITCOIN CASH (BCH)"
                 ],
@@ -304,7 +387,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
                             }
                         }
                     }
@@ -315,7 +398,39 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesTransactionCount": {
+            "post": {
+                "operationId": "/getAddressesTransactionCount",
+                "summary": "Returns the number of pending or confirmed transactions several addresses have made",
+                "description": "Returns the number of pending or confirmed transactions several addresses have made",
+                "tags": [
+                    "BITCOIN CASH (BCH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
                                 }
                             }
                         }
@@ -388,11 +503,44 @@
                 }
             }
         },
+        "/getAddressesUnspent": {
+            "post": {
+                "operationId": "/getAddressesUnspent",
+                "description": "Returns the UTXO list of the given addresses",
+                "summary": "Returns the UTXO list of the given addresses",
+                "tags": [
+                    "BITCOIN CASH (BCH)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/getTransactionHex": {
             "post": {
                 "operationId": "/getTransactionHex",
-                "summary": "Returns raw schema of any transaction",
-                "description": "Returns the transaction in raw format (hex)",
+                "summary": "Returns transaction",
+                "description": "Returns raw schema of any transaction. If verbosity is set to true, transaction object is returned, otherwise raw transaction will be returned",
                 "tags": [
                     "BITCOIN CASH (BCH)"
                 ],
@@ -413,6 +561,38 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/GetTransactionHexResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/broadcastTransaction":{
+            "post": {
+                "operationId": "/broadcastTransaction",
+                "summary": "Broadcasts a transaction to the network",
+                "description": "Broadcasts a transaction to the network",
+                "tags": [
+                    "BITCOIN CASH (BCH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/BroadcastRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/BroadcastResponseModel"
                                 }
                             }
                         }
