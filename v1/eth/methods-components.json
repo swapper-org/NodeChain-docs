@@ -502,6 +502,78 @@
                     }
                 }
             },
+            "GetAddressHistoryRequestModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressHistoryResponseModel": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    },
+                    "txHashes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                        }
+                    }
+                },
+                "required": [
+                    "address",
+                    "txHahes"
+                ]
+            },
+            "GetAddressesHistoryRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "description": "Ethereum address",
+                            "type": "string",
+                            "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                        }
+                    }
+                },
+                "required": [
+                    "address"
+                ]
+            },
+            "GetAddressesHistoryResponseModel": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "description": "Ethereum address",
+                            "type": "string",
+                            "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                        },
+                        "txHashes": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                            }
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "txHahes"
+                    ]
+                }
+            },
             "SubscribeToAddressBalanceRequestModel": {
                 "properties": {
                     "address": {
