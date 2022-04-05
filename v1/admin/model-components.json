@@ -1,0 +1,195 @@
+{
+    "components": {
+        "schemas": {
+            "BtcConfigurationModel": {
+                "description": "Bitcoin package configuration properties",
+                "type": "object",
+                "properties": {
+                    "bitcoincoreProtocol": {
+                        "description": "Communication protocol with the bitcoincore node",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "bitcoincoreHost": {
+                        "description": "Bitcoincore node host",
+                        "type": "string",
+                        "default": "bitcoincore"
+                    },
+                    "bitcoincorePort": {
+                        "description": "Bitcoincore node RPC port",
+                        "type": "string",
+                        "default": "8332"
+                    },
+                    "bitcoincoreUser": {
+                        "description": "Bitcoincore node user",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "bitcoincorePassword": {
+                        "description": "Bitcoincore node password",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "bitcoincoreZmqProtocol": {
+                        "description": "Communication protocol with the ZMQ of the bitcoincore node",
+                        "type": "string",
+                        "default": "tcp"
+                    },
+                    "bitcoincoreZmqPort": {
+                        "description": "Bitcoincore node ZMQ port",
+                        "type": "string",
+                        "default": "28332"
+                    },
+                    "electrumProtocol": {
+                        "description": "Communication protocol with electrum",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "electrumHost": {
+                        "description": "Electrum host",
+                        "type": "string",
+                        "default": "electrum"
+                    },
+                    "electrumPort": {
+                        "description": "Electrum port",
+                        "type": "string",
+                        "default": "30000"
+                    },
+                    "electrumUser": {
+                        "description": "Electrum user",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "electrumPassword": {
+                        "description": "Electrum password",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "bitcoincoreCallbackProtocol": {
+                        "description": "Callback communication protocol for bitcoincore node. It has to be the same as the communication protocol set to the connector. Bitcoincore node has to make a RPC call to connector using this protocol",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "bitcoincoreCallbackHost": {
+                        "description": "Callback host for bitcoincore node. Bitcoincore node has to make a RPC call to connector using this host",
+                        "type": "string",
+                        "default": "connector"
+                    },
+                    "electrumxHost": {
+                        "description": "Electrumx host",
+                        "type": "string",
+                        "default": "electrs"
+                    },
+                    "electrumxPort": {
+                        "description": "Electrumx port",
+                        "type": "string",
+                        "default": "60001"
+                    }
+                }
+            },
+            "EthConfigurationModel": {
+                "description": "Ethereum package configuration properties",
+                "type": "object",
+                "properties": {
+                    "protocol": {
+                        "description": "Communication protocol with the ethereum node",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "host": {
+                        "description": "Ethereum node host",
+                        "type": "string",
+                        "default": "ethereumgo"
+                    },
+                    "rpcPort": {
+                        "description": "Ethereum node RPC port",
+                        "type": "string",
+                        "default": "8545"
+                    },
+                    "wsPort": {
+                        "description": "Ethereum node Web socket port",
+                        "type": "string",
+                        "default": "8545"
+                    }
+                }
+            },
+            "BchConfigurationModel": {
+                "description": "Bitcoin cash package configuration properties",
+                "type": "object",
+                "properties": {
+                    "bitcoincoreProtocol": {
+                        "description": "Communication protocol with the bitcoincore node",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "bitcoincoreHost": {
+                        "description": "Bitcoincore node host",
+                        "type": "string",
+                        "default": "bitcoincore"
+                    },
+                    "bitcoincorePort": {
+                        "description": "Bitcoincore node port",
+                        "type": "string",
+                        "default": "8332"
+                    },
+                    "bitcoincoreUser": {
+                        "description": "Bitcoincore node user",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "bitcoincorePassword": {
+                        "description": "Bitcoincore node password",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "electrumCashProtocol": {
+                        "description": "Communication protocol with electrum",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "electrumCashHost": {
+                        "description": "Electrum host",
+                        "type": "string",
+                        "default": "electrum"
+                    },
+                    "electrumCashPort": {
+                        "description": "Electrum port",
+                        "type": "string",
+                        "default": "30000"
+                    },
+                    "electrumCashUser": {
+                        "description": "Electrum host",
+                        "type": "string",
+                        "default": "swapper"
+                    },
+                    "electrumCashPassword": {
+                        "description": "Electrum password",
+                        "type": "string",
+                        "default": "swapper"
+                    }
+                }
+            },
+            "LunaConfigurationModel": {
+                "description": "Luna package configuration properties",
+                "type": "object",
+                "properties": {
+                    "terradProtocol": {
+                        "description": "Communication protocol with the Terra node",
+                        "type": "string",
+                        "default": "http"
+                    },
+                    "terradHost": {
+                        "description": "Terra node host",
+                        "type": "string",
+                        "default": "terrad"
+                    },
+                    "terradPort": {
+                        "description": "Terra node port",
+                        "type": "string",
+                        "default": "8332"
+                    }
+                }
+            }
+        }
+    }
+}

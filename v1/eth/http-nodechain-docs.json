@@ -84,7 +84,7 @@
             }
         },
         "/getHeight": {
-            "get": {
+            "post": {
                 "operationId": "/getHeight",
                 "description": "Returns latest block hash and index",
                 "summary": "Returns latest block hash and index",
@@ -92,6 +92,15 @@
                     "ETHEREUM (ETH)"
                 ],
                 "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetHeightRequestModel"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -107,7 +116,7 @@
             }
         },
         "/getGasPrice": {
-            "get": {
+            "post": {
                 "operationId": "/getGasPrice",
                 "summary": "Returns the current price per gas in wei.",
                 "description": "Returns the current price per gas in wei.",
@@ -115,6 +124,15 @@
                     "ETHEREUM (ETH)"
                 ],
                 "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetGasPriceRequestModel"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -130,7 +148,7 @@
             }
         },
         "/syncing": {
-            "get": {
+            "post": {
                 "operationId": "/syncing",
                 "summary": "Returns if blockchain is syncing",
                 "description": "Returns True if blocks are syncing and returns False if theres no synchronization or is fully sychronize",
@@ -138,6 +156,15 @@
                     "ETHEREUM (ETH)"
                 ],
                 "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/SyncingRequestModel"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -281,9 +308,9 @@
                 }
             }
         },
-        "/getTransactionCount": {
+        "/getAddressTransactionCount": {
             "post": {
-                "operationId": "/getTransactionCount",
+                "operationId": "/getAddressTransactionCount",
                 "summary": "Returns the number of success/pending transactions of any address",
                 "description": "Returns the number of success/pending transactions of any address",
                 "tags": [
@@ -294,7 +321,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
                             }
                         }
                     }
@@ -305,7 +332,39 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesTransactionCount": {
+            "post": {
+                "operationId": "/getAddressesTransactionCount",
+                "summary": "Returns the number of success/pending transactions of an array of addresses",
+                "description": "Returns the number of success/pending transactions of an array of addresses",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
                                 }
                             }
                         }
@@ -349,8 +408,8 @@
             "post": {
                 "operationId": "/getTransaction",
                 "deprecated": false,
-                "summary": "Returns the receipt of a transaction by transaction hash",
-                "description": "Returns the receipt of a transaction by transaction hash",
+                "summary": "Returns the transaction info given its transaction hash",
+                "description": "Returns the transaction info given its transaction hash",
                 "tags": [
                     "ETHEREUM (ETH)"
                 ],
@@ -370,6 +429,70 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactions":{
+            "post": {
+                "operationId": "/getTransactions",
+                "deprecated": false,
+                "summary": "Returns the transactions info of an array of transactions hash",
+                "description": "Returns the transactions info of an array of transactions hash",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/call":{
+            "post":{
+                "operationId": "/call",
+                "deprecated": false,
+                "summary": "Executes a new message call immediately without creating a transaction on the block chain",
+                "description": "Executes a new message call immediately without creating a transaction on the block chain",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/CallRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/CallResponseModel"
                                 }
                             }
                         }

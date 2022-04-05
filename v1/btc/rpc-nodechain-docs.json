@@ -223,6 +223,75 @@
                 }
             }
         },
+        "/getAddressesHistory": {
+            "post": {
+                "operationId": "/getAddressesHistory",
+                "summary": "Return the transaction history of the given addresses",
+                "description": "Return the transaction history of the given addresses",
+                "tags": [
+                    "BITCOIN (BTC)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressesHistory"
+                                                ],
+                                                "example": "getAddressesHistory"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/getHeight": {
             "post": {
                 "operationId": "/getHeight",
@@ -294,7 +363,7 @@
         "/getBlockByHash": {
             "post": {
                 "operationId": "/getBlockByHash",
-                "description": "Returns the information of any block giving its hash",
+                "description": "Returns the information of any block giving its hash. If verbosity is 0, it returns a string that is serialized, hex-encoded data for block hash. If verbosity is 1, it returns an object with information about the block. If verbosity is 2, it returns an Object with information about the block and each transaction",
                 "summary": "Returns the information of any block giving its hash",
                 "tags": [
                     "BITCOIN (BTC)"
@@ -363,7 +432,7 @@
         "/getBlockByNumber": {
             "post": {
                 "operationId": "/getBlockByNumber",
-                "description": "Returns the information of any block giving its height",
+                "description": "Returns the information of any block giving its height. If verbosity is 0, it returns a string that is serialized, hex-encoded data for block hash. If verbosity is 1, it returns an object with information about the block. If verbosity is 2, it returns an Object with information about the block and each transaction",
                 "summary": "Returns the information of any block giving its height",
                 "tags": [
                     "BITCOIN (BTC)"
@@ -501,7 +570,7 @@
             "post": {
                 "operationId": "/getTransaction",
                 "summary": "Returns the information of any transaction",
-                "description": "Returns the information of any transaction, giving it transaction hash",
+                "description": "Returns the information of any transaction, giving its transaction hash",
                 "tags": [
                     "BITCOIN (BTC)"
                 ],
@@ -521,9 +590,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getTransaction"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getTransaction"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
@@ -554,6 +623,74 @@
                                             "properties": {
                                                 "result": {
                                                     "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactions": {
+            "post": {
+                "operationId": "/getTransactions",
+                "summary": "Returns the information of an array of transactions",
+                "description": "Returns the information of an array of transaction, giving its transactions hash",
+                "tags": [
+                    "BITCOIN (BTC)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getTransactions"
+                                                ],
+                                                "example": "getTransactions"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
                                                 }
                                             }
                                         }
@@ -633,11 +770,11 @@
                 }
             }
         },
-        "/getTransactionCount": {
+        "/getAddressTransactionCount": {
             "post": {
-                "operationId": "/getTransactionCount",
-                "summary": "Returns the information of any transaction",
-                "description": "Returns the information of any transaction, giving it transaction hash",
+                "operationId": "/getAddressTransactionCount",
+                "summary": "Returns the number of pending or confirmed transactions an address has made",
+                "description": "Returns the number of pending or confirmed transactions an address has made",
                 "tags": [
                     "BITCOIN (BTC)"
                 ],
@@ -657,12 +794,12 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "getTransactionCount"
+                                                    "getAddressTransactionCount"
                                                 ],
-                                                "example": "getTransactionCount"
+                                                "example": "getAddressTransactionCount"
                                             },
                                             "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
                                             }
                                         },
                                         "required": [
@@ -689,7 +826,75 @@
                                             "type": "object",
                                             "properties": {
                                                 "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesTransactionCount": {
+            "post": {
+                "operationId": "/getAddressesTransactionCount",
+                "summary": "Returns the information of any transaction",
+                "description": "Returns the information of any transaction, giving it transaction hash",
+                "tags": [
+                    "BITCOIN (BTC)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressesTransactionCount"
+                                                ],
+                                                "example": "getAddressesTransactionCount"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
                                                 }
                                             }
                                         }
@@ -838,11 +1043,80 @@
                 }
             }
         },
+        "/getAddressesUnspent": {
+            "post": {
+                "operationId": "/getAddressesUnspent",
+                "description": "Returns the UTXO list of an array of addresses",
+                "summary": "Returns the UTXO list of an array of addresses",
+                "tags": [
+                    "BITCOIN (BTC)"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressesUnspent"
+                                                ],
+                                                "example": "getAddressesUnspent"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/getTransactionHex": {
             "post": {
                 "operationId": "/getTransactionHex",
-                "summary": "Returns raw schema of any transaction",
-                "description": "Returns the transaction in raw format (hex)",
+                "summary": "Returns transaction",
+                "description": "Returns raw schema of any transaction. If verbosity is set to true, transaction object is returned, otherwise raw transaction will be returned",
                 "tags": [
                     "BITCOIN (BTC)"
                 ],
@@ -895,6 +1169,74 @@
                                             "properties": {
                                                 "result": {
                                                     "$ref": "./methods-components.json#/components/schemas/GetTransactionHexResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/broadcastTransaction": {
+            "post": {
+                "operationId": "/broadcastTransaction",
+                "summary": "Broadcasts a transaction to the network",
+                "description": "Broadcasts a transaction to the network",
+                "tags": [
+                    "BITCOIN (BTC)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "broadcastTransaction"
+                                                ],
+                                                "example": "broadcastTransaction"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/BroadcastRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response succesfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/BroadcastResponseModel"
                                                 }
                                             }
                                         }

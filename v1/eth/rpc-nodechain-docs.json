@@ -42,9 +42,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getAddressBalance"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getAddressBalance"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
@@ -66,7 +66,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -99,9 +111,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getAddressesBalance"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getAddressesBalance"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
@@ -123,7 +135,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -179,7 +203,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -211,9 +247,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "getHeight"
+                                                    "getGasPrice"
                                                 ],
-                                                "example": "getHeight"
+                                                "example": "getGasPrice"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetGasPriceRequestModel"
@@ -235,7 +271,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetGasPriceResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetGasPriceResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -291,7 +339,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -324,9 +384,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "broadcastTransaction"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "broadcastTransaction"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionRequestModel"
@@ -348,7 +408,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/BroadcastTransactionResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -380,9 +452,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "estimateGas"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "estimateGas"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/EstimateGasRequestModel"
@@ -404,7 +476,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/EstimateGasResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/EstimateGasResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -436,9 +520,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getBlockByHash"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getBlockByHash"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
@@ -460,7 +544,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -492,9 +588,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getBlockByNumber"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getBlockByNumber"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
@@ -516,7 +612,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -524,9 +632,9 @@
                 }
             }
         },
-        "/getTransactionCount": {
+        "/getAddressTransactionCount": {
             "post": {
-                "operationId": "/getTransactionCount",
+                "operationId": "/getAddressTransactionCount",
                 "summary": "Returns the number of success/pending transactions of any address",
                 "description": "Returns the number of success/pending transactions of any address",
                 "tags": [
@@ -548,12 +656,12 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getAddressTransactionCount"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getAddressTransactionCount"
                                             },
                                             "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionCountRequestModel"
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
                                             }
                                         },
                                         "required": [
@@ -572,7 +680,87 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionCountResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesTransactionCount": {
+            "post": {
+                "operationId": "/getAddressesTransactionCount",
+                "summary": "Returns the number of success/pending transactions of an array of address",
+                "description": "Returns the number of success/pending transactions of an array of any address",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "deprecated": false,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressesTransactionCount"
+                                                ],
+                                                "example": "getAddressesTransactionCount"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -604,9 +792,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getTransactionReceipt"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getTransactionReceipt"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptRequestModel"
@@ -628,7 +816,19 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionReceiptResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -640,8 +840,8 @@
             "post": {
                 "operationId": "/getTransaction",
                 "deprecated": false,
-                "summary": "Returns the receipt of a transaction by transaction hash",
-                "description": "Returns the receipt of a transaction by transaction hash",
+                "summary": "Returns the transaction info given its hash",
+                "description": "Returns the transaction info given its hash",
                 "tags": [
                     "ETHEREUM (ETH)"
                 ],
@@ -660,9 +860,9 @@
                                                 "description": "Method name",
                                                 "type": "string",
                                                 "enum": [
-                                                    "subscribeToAddressBalance"
+                                                    "getTransaction"
                                                 ],
-                                                "example": "subscribeToAddressBalance"
+                                                "example": "getTransaction"
                                             },
                                             "params": {
                                                 "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
@@ -684,7 +884,155 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTransactions": {
+            "post": {
+                "operationId": "/getTransactions",
+                "deprecated": false,
+                "summary": "Returns the transactions info given an array of transaction hashes",
+                "description": "Returns the transactions info given an array of transaction hashes",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getTransactions"
+                                                ],
+                                                "example": "getTransactions"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/call": {
+            "post": {
+                "operationId": "/call",
+                "deprecated": false,
+                "summary": "Executes a new message call immediately without creating a transaction on the block chain",
+                "description": "Executes a new message call immediately without creating a transaction on the block chain",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "call"
+                                                ],
+                                                "example": "call"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/CallRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/CallResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }

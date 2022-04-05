@@ -1,0 +1,69 @@
+{
+    "x-send-defaults": true,
+    "openapi": "3.0.0",
+    "x-api-id": "info-http-nodechain",
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+      "curl",
+      "python"
+    ],
+    "tags": [],
+    "info": {
+        "title": "Info HTTP NodeChain API",
+        "version": "1.0.0",
+        "description": "Docs relating to the info endpoints of the Connector"
+    },
+    "paths": {
+        "/getVersion": {
+            "get": {
+                "operationId": "/getVersion",
+                "summary": "Return the Connector's version",
+                "description": "Return the Connector's version",
+                "tags": [
+                    "INFO"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetVersionResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getStatus": {
+            "get": {
+                "operationId": "/getStatus",
+                "summary": "Return the Connector's status",
+                "description": "Return the Connector's status",
+                "tags": [
+                    "INFO"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetStatusResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

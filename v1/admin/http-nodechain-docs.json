@@ -1,0 +1,157 @@
+{
+    "x-send-defaults": true,
+    "openapi": "3.0.0",
+    "x-api-id": "admin-http-nodechain",
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+        "curl",
+        "python"
+    ],
+    "tags": [],
+    "info": {
+        "title": "Admin HTTP NodeChain API",
+        "version": "1.0.0",
+        "description": "Docs relating to the admin endpoints of the Connector"
+    },
+    "paths": {
+        "/addcoin": {
+            "post": {
+                "operationId": "/addcoin",
+                "summary": "This method allows you to enable an API for a currency in the specified network. A currency can be supported in multiple networks",
+                "description": "Configuration properties required to enable the currency API in a specific network. If a property is not set, default value will be load. Each currency needs different properties",
+                "tags": [
+                    "Admin"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/AddCoinRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/AddCoinResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getcoin": {
+            "post": {
+                "operationId": "/getcoin",
+                "summary": "This method allows you to get the configuration info that a currency API is using for a specific network",
+                "description": "This method allows you to get the configuration info that a currency API is using for a specific network",
+                "tags": [
+                    "Admin"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetCoinRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetCoinResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/updatecoin": {
+            "post": {
+                "operationId": "/updatecoin",
+                "summary": "This method allows you to update the configuration info that a currency API is using for a specific network",
+                "description": "This method allows you to update the configuration info that a currency API is using for a specific network",
+                "tags": [
+                    "Admin"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/UpdateCoinRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/UpdateCoinResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/removecoin": {
+            "post": {
+                "operationId": "/removecoin",
+                "summary": "This method allows you to disable an API for a currency in the specified network.",
+                "description": "This method allows you to disable an API for a currency in the specified network.",
+                "tags": [
+                    "Admin"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/RemoveCoinRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/RemoveCoinResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

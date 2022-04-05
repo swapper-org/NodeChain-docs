@@ -53,8 +53,8 @@
                     },
                     "latestBlockIndex": {
                         "description": "Ethereum block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     }
                 },
                 "required": [
@@ -96,13 +96,13 @@
                     },
                     "currentBlockIndex": {
                         "description": "Ethereum block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     },
                     "latestBlockIndex": {
                         "description": "Ethereum block height",
-                        "type": "integer",
-                        "example": 1
+                        "type": "string",
+                        "example": "1"
                     }
                 },
                 "required": [
@@ -159,7 +159,7 @@
                     "estimatedGas": {
                         "description": "Estimated gas for the transaction execution",
                         "type": "string",
-                        "example": "0x79ccd3"
+                        "example": "7982291"
                     }
                 },
                 "required": [
@@ -196,7 +196,7 @@
             "GetBlockByNumberResponseModel": {
                 "$ref": "./model-components.json#/components/schemas/BlockModel"
             },
-            "GetTransactionCountRequestModel": {
+            "GetAddressTransactionCountRequestModel": {
                 "type": "object",
                 "properties": {
                     "address": {
@@ -206,7 +206,8 @@
                     },
                     "pending": {
                         "description": "True to get pending blocks",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "example": true
                     }
                 },
                 "required": [
@@ -214,7 +215,50 @@
                     "pending"
                 ]
             },
-            "GetTransactionCountResponseModel": {
+            "GetAddressesTransactionCountResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactionCount": {
+                        "description": "Number of transactions",
+                        "type": "string",
+                        "example": "0"
+                    }
+                },
+                "required": [
+                    "transactionCount"
+                ]
+            },
+            "GetAddressesTransactionCountRequestModel": {
+                "type": "object",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "description": "Ethereum address",
+                                    "type": "string",
+                                    "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                },
+                                "pending": {
+                                    "description": "True to get pending blocks",
+                                    "type": "boolean",
+                                    "example": true
+                                }
+                            },
+                            "required": [
+                                "address",
+                                "pending"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "addresses"
+                ]
+            },
+            "GetAddressTransactionCountResponseModel": {
                 "type": "object",
                 "properties": {
                     "transactionCount": {
@@ -256,43 +300,205 @@
                 "type": "object",
                 "properties": {
                     "transaction": {
-                        "$ref": "./model-components.json#/components/schemas/TransactionModel"
-                    },
-                    "inputs": {
+                        "type": "object",
+                        "properties": {
+                            "txHash": {
+                                "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                            },
+                            "fee": {
+                                "description": "Transaction fee",
+                                "type": "string",
+                                "example": "7982291"
+                            },
+                            "blockHash": {
+                                "description": "Ethereum block hash",
+                                "type": "string",
+                                "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+                            },
+                            "blockNumber": {
+                                "oneOf": [
+                                    {
+                                        "description": "Ethereum block height",
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "value": null
+                                    }
+                                ]
+                            },
+                            "inputs": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "address": {
+                                            "description": "Ethereum address",
+                                            "type": "string",
+                                            "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                        },
+                                        "amount": {
+                                            "description": "Value in WEI",
+                                            "type": "string",
+                                            "example": "1000000000000000000"
+                                        }
+                                    }
+                                }
+                            },
+                            "outputs": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "address": {
+                                            "description": "Ethereum address",
+                                            "type": "string",
+                                            "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                        },
+                                        "amount": {
+                                            "description": "Value in WEI",
+                                            "type": "string",
+                                            "example": "1000000000000000000"
+                                        }
+                                    }
+                                }
+                            },
+                            "data": {
+                                "$ref": "./model-components.json#/components/schemas/TransactionModel"
+                            }
+                        }
+                    }
+                }
+            },
+            "GetTransactionsRequestModel": {
+                "type": "object",
+                "properties": {
+                    "txHashes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
+                        }
+                    }
+                },
+                "required": [
+                    "txHashes"
+                ]
+            },
+            "GetTransactionsResponseModel": {
+                "type": "object",
+                "properties": {
+                    "transactions": {
                         "type": "array",
                         "items": {
                             "type": "object",
                             "properties": {
-                                "address": {
-                                    "description": "Ethereum address",
-                                    "type": "string",
-                                    "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                "txHash": {
+                                    "$ref": "./model-components.json#/components/schemas/TransactionHashModel"
                                 },
-                                "amount": {
-                                    "description": "Value in WEI",
-                                    "type": "integer",
-                                    "example": 1000000000000000000
+                                "fee": {
+                                    "description": "Transaction fee",
+                                    "type": "string",
+                                    "example": "7982291"
+                                },
+                                "blockHash": {
+                                    "description": "Ethereum block hash",
+                                    "type": "string",
+                                    "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+                                },
+                                "blockNumber": {
+                                    "oneOf": [
+                                        {
+                                            "description": "Ethereum block height",
+                                            "type": "string",
+                                            "example": "1"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "value": null
+                                        }
+                                    ]
+                                },
+                                "inputs": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "address": {
+                                                "description": "Ethereum address",
+                                                "type": "string",
+                                                "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                            },
+                                            "amount": {
+                                                "description": "Value in WEI",
+                                                "type": "string",
+                                                "example": "1000000000000000000"
+                                            }
+                                        }
+                                    }
+                                },
+                                "outputs": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "address": {
+                                                "description": "Ethereum address",
+                                                "type": "string",
+                                                "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                                            },
+                                            "amount": {
+                                                "description": "Value in WEI",
+                                                "type": "string",
+                                                "example": "1000000000000000000"
+                                            }
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "$ref": "./model-components.json#/components/schemas/TransactionModel"
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "CallRequestModel": {
+                "type": "object",
+                "properties": {
+                    "transaction": {
+                        "$ref": "./model-components.json#/components/schemas/TransactionCallModel"
                     },
-                    "outputs": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "address": {
-                                    "description": "Ethereum address",
-                                    "type": "string",
-                                    "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
-                                },
-                                "amount": {
-                                    "description": "Value in WEI",
-                                    "type": "integer",
-                                    "example": 1000000000000000000
-                                }
+                    "blockNumber": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "latest",
+                                    "earliest",
+                                    "pending"
+                                ],
+                                "example": "latest"
+                            },
+                            {
+                                "type": "string",
+                                "pattern": "[0-9]"
                             }
-                        }
+                        ]
+                    }
+                },
+                "required": [
+                    "transaction",
+                    "blockNumber"
+                ]
+            },
+            "CallResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "The return value of executed contract",
+                        "type": "string",
+                        "example": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
                     }
                 }
             },
