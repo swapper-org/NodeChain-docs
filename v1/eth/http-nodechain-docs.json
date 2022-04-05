@@ -7,8 +7,8 @@
     "x-proxy-enabled": true,
     "x-samples-enabled": true,
     "x-samples-languages": [
-      "curl",
-      "python"
+        "curl",
+        "python"
     ],
     "tags": [],
     "info": {
@@ -404,7 +404,7 @@
                 }
             }
         },
-        "/getTransaction":{
+        "/getTransaction": {
             "post": {
                 "operationId": "/getTransaction",
                 "deprecated": false,
@@ -436,7 +436,7 @@
                 }
             }
         },
-        "/getTransactions":{
+        "/getTransactions": {
             "post": {
                 "operationId": "/getTransactions",
                 "deprecated": false,
@@ -468,8 +468,8 @@
                 }
             }
         },
-        "/call":{
-            "post":{
+        "/call": {
+            "post": {
                 "operationId": "/call",
                 "deprecated": false,
                 "summary": "Executes a new message call immediately without creating a transaction on the block chain",
@@ -493,6 +493,70 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/CallResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressHistoty": {
+            "post": {
+                "operationId": "/getAddressHistoty",
+                "deprecated": false,
+                "summary": "Get transaction history of an address",
+                "description": "Get transaction history of an address",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesHistory": {
+            "post": {
+                "operationId": "/getAddressesHistory",
+                "deprecated": false,
+                "summary": "Get transaction history of an array of address",
+                "description": "Get transaction history of an array of addresses",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
                                 }
                             }
                         }

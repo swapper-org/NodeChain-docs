@@ -1039,6 +1039,142 @@
                     }
                 }
             }
+        },
+        "/getAddressHistory": {
+            "post": {
+                "operationId": "/getAddressHistory",
+                "deprecated": false,
+                "summary": "Get transaction history of an address",
+                "description": "Get transaction history of aaddresses",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressHistory"
+                                                ],
+                                                "example": "getAddressHistory"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddressesHistory": {
+            "post": {
+                "operationId": "/getAddressesHistory",
+                "deprecated": false,
+                "summary": "Get transaction history of an array of address",
+                "description": "Get transaction history of an array of addresses",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "method": {
+                                                "description": "Method name",
+                                                "type": "string",
+                                                "enum": [
+                                                    "getAddressesHistory"
+                                                ],
+                                                "example": "getAddressesHistory"
+                                            },
+                                            "params": {
+                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
+                                            }
+                                        },
+                                        "required": [
+                                            "method",
+                                            "params"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
