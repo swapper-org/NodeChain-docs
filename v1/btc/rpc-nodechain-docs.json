@@ -30,30 +30,29 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressBalance"
-                                                ],
-                                                "example": "getAddressBalance"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressBalance",
+                                        "type": "string",
+                                        "example": "getAddressBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -65,18 +64,22 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+    
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
