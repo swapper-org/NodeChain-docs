@@ -21,7 +21,7 @@
             "post": {
                 "operationId": "/addcoin",
                 "summary": "This method allows you to enable an API for a currency in the specified network. A currency can be supported in multiple networks",
-                "description": "Configuration properties required to enable the currency API in a specific network. If a property is not set, default value will be load. Each currency needs different properties",
+                "description": "This method allows you to enable an API for a currency in the specified network. A currency can be supported in multiple networks. Configuration properties required (config parameter) to enable the currency API in a specific network are different for each API. Default values are used if custom config is not used.",
                 "tags": [
                     "Admin"
                 ],
@@ -54,8 +54,8 @@
         "/getcoin": {
             "post": {
                 "operationId": "/getcoin",
-                "summary": "This method allows you to get the configuration info that a currency API is using for a specific network",
-                "description": "This method allows you to get the configuration info that a currency API is using for a specific network",
+                "summary": "This method allows you to get the configuration properties that a currency API is using for a specific network.",
+                "description": "This method allows you to get the configuration properties that a currency API is using for a specific network. Configuration properties (config parameter) returned are different for each API.",
                 "tags": [
                     "Admin"
                 ],
@@ -88,8 +88,8 @@
         "/updatecoin": {
             "post": {
                 "operationId": "/updatecoin",
-                "summary": "This method allows you to update the configuration info that a currency API is using for a specific network",
-                "description": "This method allows you to update the configuration info that a currency API is using for a specific network",
+                "summary": "This method allows you to update the configuration properties that a currency API is using for a specific network.",
+                "description": "This method allows you to update the configuration properties that a currency API is using for a specific network. Configuration properties required (config parameter) to update the currency API in a specific network are different for each API.",
                 "tags": [
                     "Admin"
                 ],
