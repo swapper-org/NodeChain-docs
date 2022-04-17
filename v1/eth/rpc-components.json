@@ -6,15 +6,12 @@
                 "title": "JSON-RPC Request ID",
                 "type": "integer",
                 "format": "int32",
-                "example": 1609070896412
+                "example": 160907
             },
             "JSONRPCVersionModel": {
                 "description": "JSON-RPC Version",
                 "title": "JSON-RPC Version",
                 "type": "string",
-                "enum": [
-                    "2.0"
-                ],
                 "example": "2.0"
             },
             "JSONRPCPayloadModel": {
