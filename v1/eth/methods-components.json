@@ -617,6 +617,41 @@
             },
             "UnsubscribeFromNewBlocksResponseModel": {
                 "$ref": "./model-components.json#/components/schemas/UnsubscriptionModel"
+            },
+            "IndexingRequestModel": {
+                "type": "object",
+                "propeties": {}
+            },
+            "IndexingResponseModel": {
+                "type": "object",
+                "properties": {
+                    "indexing": {
+                        "description": "Indexing process is running",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "indexingPercentage": {
+                        "description": "Percentage of the indexing process",
+                        "type": "string",
+                        "example": "6.905658629231632%"
+                    },
+                    "currentBlockIndex": {
+                        "description": "Last block indexed",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "latestBlockIndex": {
+                        "description": "Last block known by the node",
+                        "type": "string",
+                        "example": "1"
+                    }
+                },
+                "required": [
+                    "indexing",
+                    "indexingPercentage",
+                    "currentBlockIndex",
+                    "latestBlockIndex"
+                ]
             }
         }
     }

@@ -1192,6 +1192,75 @@
                     }
                 }
             }
+        },
+        "/indexing": {
+            "post": {
+                "operationId": "/indexing",
+                "deprecated": false,
+                "summary": "Returns the info of the transaction indexing process.",
+                "description": "Returns the info of the transaction indexing process.",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                    },
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be indexing",
+                                        "type": "string",
+                                        "example": "indexing"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/IndexingRequestModel"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                        },
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/IndexingResponseModel"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
