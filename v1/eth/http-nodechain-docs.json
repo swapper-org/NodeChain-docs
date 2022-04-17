@@ -500,9 +500,9 @@
                 }
             }
         },
-        "/getAddressHistoty": {
+        "/getAddressHistory": {
             "post": {
-                "operationId": "/getAddressHistoty",
+                "operationId": "/getAddressHistory",
                 "deprecated": false,
                 "summary": "Get transaction history of an address",
                 "description": "Get transaction history of an address",
@@ -557,6 +557,38 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/indexing": {
+            "post": {
+                "operationId": "/indexing",
+                "deprecated": false,
+                "summary": "Returns the info of the transaction indexing process.",
+                "description": "Returns the info of the transaction indexing process.",
+                "tags": [
+                    "ETHEREUM (ETH)"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "./methods-components.json#/components/schemas/IndexingRequestModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./methods-components.json#/components/schemas/IndexingResponseModel"
                                 }
                             }
                         }
