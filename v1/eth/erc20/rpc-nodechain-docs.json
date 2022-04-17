@@ -1,0 +1,161 @@
+{
+    "x-send-defaults": true,
+    "openapi": "3.0.0",
+    "x-api-id": "eth-erc20-rpc-nodechain",
+    "x-headers": [],
+    "x-explorer-enabled": true,
+    "x-proxy-enabled": true,
+    "x-samples-enabled": true,
+    "x-samples-languages": [
+        "curl",
+        "python"
+    ],
+    "tags": [],
+    "info": {
+        "title": "ETH ERc-20 RPC NodeChain API",
+        "version": "1.0.0",
+        "description": "Docs relating to the ETH ERC-20 RPC API, including the connection to the API of the native node. Its goal is to give the user an easy way to be able to raise their own nodes for use with the native Swapper application."
+    },
+    "paths": {
+        "/erc20/getAddressBalance": {
+            "post": {
+                "operationId": "/erc20/getAddressBalance",
+                "summary": "Return the balance of any address of the given ERC-20 Contracts",
+                "description": "Return the balance of any address of the given ERC-20 Contracts",
+                "tags": [
+                    "ETHEREUM ERC20"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                    },
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressBalance",
+                                        "type": "string",
+                                        "example": "getAddressBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                        },
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/erc20/getAddressesBalance": {
+            "post": {
+                "operationId": "/erc20/getAddressesBalance",
+                "summary": "Return the balance of the given addresses of the given ERC-20 Contracts",
+                "description": "Return the balance of the given addresses of the given ERC-20 Contracts",
+                "tags": [
+                    "ETHEREUM ERC20"
+                ],
+                "deprecated": false,
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                    },
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressesBalance",
+                                        "type": "string",
+                                        "example": "getAddressesBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
+                                        },
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

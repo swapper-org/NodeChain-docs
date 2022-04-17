@@ -1,7 +1,7 @@
 {
     "x-send-defaults": true,
     "openapi": "3.0.0",
-    "x-api-id": "bch-rpc-nodechain",
+    "x-api-id": "btc-rpc-nodechain",
     "info": {
         "title": "BCH RPC NodeChain API",
         "version": "1.0.0",
@@ -30,30 +30,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressBalance"
-                                                ],
-                                                "example": "getAddressBalance"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressBalance",
+                                        "type": "string",
+                                        "example": "getAddressBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -65,18 +63,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressBalanceResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -99,30 +100,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressesBalance"
-                                                ],
-                                                "example": "getAddressesBalance"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressesBalance",
+                                        "type": "string",
+                                        "example": "getAddressesBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -134,18 +133,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressesBalanceResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -168,30 +170,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressHistory"
-                                                ],
-                                                "example": "getAddressHistory"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressHistory",
+                                        "type": "string",
+                                        "example": "getAddressHistory"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -203,18 +203,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressHistoryResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -237,30 +240,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressesHistory"
-                                                ],
-                                                "example": "getAddressesHistory"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressesHistory",
+                                        "type": "string",
+                                        "example": "getAddressesHistory"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -272,18 +273,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressesHistoryResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -305,30 +309,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getHeight"
-                                                ],
-                                                "example": "getHeight"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetHeightRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getHeight",
+                                        "type": "string",
+                                        "example": "getHeight"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetHeightRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -340,18 +342,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetHeightResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -374,30 +379,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getBlockByHash"
-                                                ],
-                                                "example": "getBlockByHash"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getBlockByHash",
+                                        "type": "string",
+                                        "example": "getBlockByHash"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetBlockByHashRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -409,18 +412,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetBlockByHashResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -443,30 +449,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getBlockByNumber"
-                                                ],
-                                                "example": "getBlockByNumber"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getBlockByNumber",
+                                        "type": "string",
+                                        "example": "getBlockByNumber"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -478,18 +482,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetBlockByNumberResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -511,30 +518,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "syncing"
-                                                ],
-                                                "example": "syncing"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/SyncingRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be syncing",
+                                        "type": "string",
+                                        "example": "syncing"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/SyncingRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -546,18 +551,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/SyncingResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -579,30 +587,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getTransaction"
-                                                ],
-                                                "example": "getTransaction"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getTransaction",
+                                        "type": "string",
+                                        "example": "getTransaction"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetTransactionRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -614,18 +620,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetTransactionResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -647,30 +656,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getTransactions"
-                                                ],
-                                                "example": "getTransactions"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getTransactions",
+                                        "type": "string",
+                                        "example": "getTransactions"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetTransactionsRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -682,18 +689,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetTransactionsResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -715,30 +725,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "notify"
-                                                ],
-                                                "example": "notify"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/NotifyRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be notify",
+                                        "type": "string",
+                                        "example": "notify"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/NotifyRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -750,18 +758,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/NotifyResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/NotifyResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -783,30 +794,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressTransactionCount"
-                                                ],
-                                                "example": "getAddressTransactionCount"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressTransactionCount",
+                                        "type": "string",
+                                        "example": "getAddressTransactionCount"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -818,18 +827,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressTransactionCountResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -851,30 +863,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressesTransactionCount"
-                                                ],
-                                                "example": "getAddressesTransactionCount"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressesTransactionCount",
+                                        "type": "string",
+                                        "example": "getAddressesTransactionCount"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -886,18 +896,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressesTransactionCountResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -919,30 +932,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getFeePerByte"
-                                                ],
-                                                "example": "getFeePerByte"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetFeePerByteRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getFeePerByte",
+                                        "type": "string",
+                                        "example": "getFeePerByte"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetFeePerByteRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -954,18 +965,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetFeePerByteResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetFeePerByteResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -988,30 +1002,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressUnspent"
-                                                ],
-                                                "example": "getAddressUnspent"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressUnspent",
+                                        "type": "string",
+                                        "example": "getAddressUnspent"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -1023,18 +1035,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressUnspentResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -1057,30 +1072,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getAddressesUnspent"
-                                                ],
-                                                "example": "getAddressesUnspent"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getAddressesUnspent",
+                                        "type": "string",
+                                        "example": "getAddressesUnspent"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -1092,18 +1105,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetAddressesUnspentResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -1125,30 +1141,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "getTransactionHex"
-                                                ],
-                                                "example": "getTransactionHex"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/GetTransactionHexRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be getTransactionHex",
+                                        "type": "string",
+                                        "example": "getTransactionHex"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/GetTransactionHexRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -1160,18 +1174,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/GetTransactionHexResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/GetTransactionHexResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -1193,30 +1210,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "broadcastTransaction"
-                                                ],
-                                                "example": "broadcastTransaction"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/BroadcastRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be broadcastTransaction",
+                                        "type": "string",
+                                        "example": "broadcastTransaction"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/BroadcastRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -1228,18 +1243,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/BroadcastResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/BroadcastResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }

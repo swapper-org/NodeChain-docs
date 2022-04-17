@@ -31,30 +31,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "subscribeToAddressBalance"
-                                                ],
-                                                "example": "subscribeToAddressBalance"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be subscribeToAddressBalance",
+                                        "type": "string",
+                                        "example": "subscribeToAddressBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -66,18 +64,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -100,30 +101,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "unsubscribeFromAddressBalance"
-                                                ],
-                                                "example": "unsubscribeFromAddressBalance"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToAddressBalanceRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be unsubscribeFromAddressBalance",
+                                        "type": "string",
+                                        "example": "unsubscribeFromAddressBalance"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromAddressBalanceRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -135,18 +134,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromAddressBalanceResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromAddressBalanceResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -169,30 +171,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "subscribeToNewBlocks"
-                                                ],
-                                                "example": "subscribeToNewBlocks"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be subscribeToNewBlocks",
+                                        "type": "string",
+                                        "example": "subscribeToNewBlocks"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -204,18 +204,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/SubscribeToNewBlocksResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }
@@ -238,30 +241,28 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                     },
-                                    {
-                                        "type": "object",
-                                        "properties": {
-                                            "method": {
-                                                "description": "Method name",
-                                                "type": "string",
-                                                "enum": [
-                                                    "unsubscribeFromNewBlocks"
-                                                ],
-                                                "example": "unsubscribeFromNewBlocks"
-                                            },
-                                            "params": {
-                                                "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksRequestModel"
-                                            }
-                                        },
-                                        "required": [
-                                            "method",
-                                            "params"
-                                        ]
+                                    "jsonrpc": {
+                                        "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                    },
+                                    "method": {
+                                        "description": "Method name to be called. For this operation, the field value must be unsubscribeFromNewBlocks",
+                                        "type": "string",
+                                        "example": "unsubscribeFromNewBlocks"
+                                    },
+                                    "params": {
+                                        "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksRequestModel"
                                     }
+                                },
+                                "required": [
+                                    "id",
+                                    "jsonrpc",
+                                    "method",
+                                    "params"
                                 ]
                             }
                         }
@@ -273,18 +274,21 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCPayloadModel"
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONIDModel"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "result": {
-                                                    "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksResponseModel"
-                                                }
-                                            }
+                                        "jsonrpc": {
+                                            "$ref": "./rpc-components.json#/components/schemas/JSONRPCVersionModel"
+                                        },
+                                        "result": {
+                                            "$ref": "./methods-components.json#/components/schemas/UnsubscribeFromNewBlocksResponseModel"
                                         }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "jsonrpc"
                                     ]
                                 }
                             }

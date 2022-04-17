@@ -1,0 +1,40 @@
+{
+    "components": {
+        "schemas": {
+            "BalanceModel": {
+                "description": "Ethreum address balance",
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "description": "Ethereum address",
+                        "type": "string",
+                        "example": "0x625ACaEdeF812d2842eFd2Fb0294682A868455bd"
+                    },
+                    "balance": {
+                        "type": "object",
+                        "properties": {
+                            "confirmed": {
+                                "description": "Balance confirmed of Ethereum address",
+                                "type": "string",
+                                "example": "10000"
+                            },
+                            "unconfirmed": {
+                                "description": "Balance unconfirmed of Ethereum address",
+                                "type": "string",
+                                "example": "0"
+                            }
+                        },
+                        "required": [
+                            "confirmed",
+                            "unconfirmed"
+                        ]
+                    }
+                },
+                "required": [
+                    "address",
+                    "balance"
+                ]
+            }
+        }
+    }
+}
