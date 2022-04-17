@@ -48,7 +48,7 @@
                     "message": {
                         "description": "Response description",
                         "type": "string",
-                        "example": "testnt network added for currency btc"
+                        "example": "testnet network added for currency btc"
                     }
                 },
                 "required": [
