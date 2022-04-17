@@ -1,0 +1,35 @@
+{
+    "components": {
+        "schemas": {
+            "JSONIDModel": {
+                "description": "Request ID",
+                "title": "JSON-RPC Request ID",
+                "type": "integer",
+                "format": "int32",
+                "example": 160907
+            },
+            "JSONRPCVersionModel": {
+                "description": "JSON-RPC Version",
+                "title": "JSON-RPC Version",
+                "type": "string",
+                "example": "2.0"
+            },
+            "JSONRPCPayloadModel": {
+                "description": "JSON-RPC Payload Structure",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/JSONIDModel"
+                    },
+                    "jsonrpc": {
+                        "$ref": "#/components/schemas/JSONRPCVersionModel"
+                    }
+                },
+                "required": [
+                    "id",
+                    "jsonrpc"
+                ]
+            }
+        }
+    }
+}
