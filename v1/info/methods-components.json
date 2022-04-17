@@ -4,7 +4,7 @@
             "GetVersionResponseModel": {
                 "type": "object",
                 "properties": {
-                    "address": {
+                    "version": {
                         "description": "Connector version",
                         "type": "string",
                         "example": "1.1.7"
@@ -17,14 +17,14 @@
             "GetStatusResponseModel": {
                 "type": "object",
                 "properties": {
-                    "address": {
+                    "status": {
                         "description": "Connector status",
                         "type": "string",
                         "example": "Connector is running"
                     }
                 },
                 "required": [
-                    "version"
+                    "status"
                 ]
             }
         }
