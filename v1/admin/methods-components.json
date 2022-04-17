@@ -5,12 +5,12 @@
                 "type": "object",
                 "properties": {
                     "coin": {
-                        "description": "Currency for which you want to enable an API in the connector",
+                        "description": "Currency for which you want to enable an API in the connector.",
                         "type": "string",
                         "example": "btc"
                     },
                     "network": {
-                        "description": "Network on which you want to enable the specified currency",
+                        "description": "Network on which you want to enable the specified currency.",
                         "type": "string",
                         "example": "testnet"
                     },
@@ -60,12 +60,12 @@
                 "type": "object",
                 "properties": {
                     "coin": {
-                        "description": "Currency from which the configuration parameters are to be returned",
+                        "description": "Currency from which the configuration parameters are to be returned.",
                         "type": "string",
                         "example": "btc"
                     },
                     "network": {
-                        "description": "Network of the currency from which the configuration parameters are to be returned",
+                        "description": "Network of the currency from which the configuration parameters are to be returned.",
                         "type": "string",
                         "example": "testnet"
                     }
@@ -86,7 +86,7 @@
                     "message": {
                         "description": "Response description",
                         "type": "string",
-                        "example": "testnt network added for currency btc"
+                        "example": "Configuration for testnet network for currency btc retrieved successfully"
                     },
                     "config": {
                         "oneOf": [
