@@ -173,6 +173,16 @@
                         "description": "A string representing the hash (32 bytes) of a block",
                         "type": "string",
                         "example": "0x6403b287ab8bd587cd9e07c3d2ca62269f19dfb7c195892980f14d71fefa7cdd"
+                    },
+                    "verbose": {
+                        "description": "Verbosity mode. With 2 value, transactions inside the block are returned completly, otherwise, only transactions hash will be returned",
+                        "type": "integer",
+                        "default": 2,
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "example": 2
                     }
                 },
                 "required": [
@@ -180,13 +190,30 @@
                 ]
             },
             "GetBlockByHashResponseModel": {
-                "$ref": "./model-components.json#/components/schemas/BlockModel"
+                "type": "object",
+                "properties": {
+                    "block": {
+                        "$ref": "./model-components.json#/components/schemas/BlockModel"
+                    }
+                }
             },
             "GetBlockByNumberRequestModel": {
                 "type": "object",
                 "properties": {
                     "blockNumber": {
-                        "$ref": "./model-components.json#/components/schemas/BlockHeightModel"
+                        "description": "Ethereum block height. Supports the param latest to get the last block of the chain. The param can be in decimal or hexadecimal format",
+                        "type": "string",
+                        "example": "0x1"
+                    },
+                    "verbose": {
+                        "description": "Verbosity mode. With 2 value, transactions inside the block are returned completly, otherwise, only transactions hash will be returned",
+                        "type": "integer",
+                        "default": 2,
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "example": 2
                     }
                 },
                 "required": [
@@ -194,7 +221,12 @@
                 ]
             },
             "GetBlockByNumberResponseModel": {
-                "$ref": "./model-components.json#/components/schemas/BlockModel"
+                "type": "object",
+                "properties": {
+                    "block": {
+                        "$ref": "./model-components.json#/components/schemas/BlockModel"
+                    }
+                }
             },
             "GetAddressTransactionCountRequestModel": {
                 "type": "object",
