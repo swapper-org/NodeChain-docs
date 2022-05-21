@@ -328,6 +328,19 @@
                                     }
                                 ]
                             },
+                            "timestamp": {
+                                "oneOf": [
+                                    {
+                                        "description": "Timestamp in which transaction was confirmed. Null if transaction is unconfirmed",
+                                        "type": "string",
+                                        "example": "1653156295"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "value": null
+                                    }
+                                ]
+                            },
                             "inputs": {
                                 "type": "array",
                                 "items": {
@@ -412,6 +425,19 @@
                                             "description": "Ethereum block height",
                                             "type": "string",
                                             "example": "1"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "value": null
+                                        }
+                                    ]
+                                },
+                                "timestamp": {
+                                    "oneOf": [
+                                        {
+                                            "description": "Timestamp in which transaction was confirmed. Null if transaction is unconfirmed",
+                                            "type": "string",
+                                            "example": "1653156295"
                                         },
                                         {
                                             "type": "object",

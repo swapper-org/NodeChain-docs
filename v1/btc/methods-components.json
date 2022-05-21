@@ -236,6 +236,11 @@
                                 "type": "string",
                                 "example": "3"
                             },
+                            "timestamp": {
+                                "description": "Timestamp in which transaction was confirmed. Null if transaction is unconfirmed",
+                                "type": "string",
+                                "example": "1653156295"
+                            },
                             "fee": {
                                 "description": "Transaction fee",
                                 "type": "string",
@@ -316,6 +321,11 @@
                                     "description": "Block which contains the transaction. Null if transaction is unconfirmed",
                                     "type": "string",
                                     "example": "3"
+                                },
+                                "timestamp": {
+                                    "description": "Timestamp in which transaction was confirmed. Null if transaction is unconfirmed",
+                                    "type": "string",
+                                    "example": "1653156295"
                                 },
                                 "fee": {
                                     "description": "Transaction fee",
