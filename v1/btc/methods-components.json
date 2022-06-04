@@ -40,6 +40,27 @@
                 "properties": {
                     "address": {
                         "$ref": "model-components.json#/components/schemas/AddressModel"
+                    },
+                    "page": {
+                        "description": "Number of page to return",
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 0,
+                        "example": 0
+                    },
+                    "pageSize": {
+                        "description": "Number of transactions to return per page",
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 0,
+                        "default": 0,
+                        "example": 25
+                    },
+                    "order": {
+                        "description": "Criteria to sort the transactions in the page returned. It accepts two values, 'desc' to return the most recent transactions first, and 'asc' to return the oldest transactions first",
+                        "type": "string",
+                        "default": "desc",
+                        "example": "desc"
                     }
                 },
                 "required": [
@@ -57,11 +78,17 @@
                         "items": {
                             "$ref": "model-components.json#/components/schemas/TransactionHashModel"
                         }
+                    },
+                    "maxPage": {
+                        "description": "Max page to return with the parameters 'page' and 'pageSize' set in the request",
+                        "type": "integer",
+                        "example": 12
                     }
                 },
                 "required": [
                     "address",
-                    "txHashes"
+                    "txHashes",
+                    "maxPage"
                 ]
             },
             "GetAddressesHistoryRequestModel": {
@@ -72,6 +99,27 @@
                         "items": {
                             "$ref": "model-components.json#/components/schemas/AddressModel"
                         }
+                    },
+                    "page": {
+                        "description": "Number of page to return",
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 0,
+                        "example": 0
+                    },
+                    "pageSize": {
+                        "description": "Number of transactions to return per page",
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 0,
+                        "default": 0,
+                        "example": 25
+                    },
+                    "order": {
+                        "description": "Criteria to sort the transactions in the page returned. It accepts two values, 'desc' to return the most recent transactions first, and 'asc' to return the oldest transactions first",
+                        "type": "string",
+                        "default": "desc",
+                        "example": "desc"
                     }
                 },
                 "required": [
@@ -91,11 +139,17 @@
                             "items": {
                                 "$ref": "model-components.json#/components/schemas/TransactionHashModel"
                             }
+                        },
+                        "maxPage": {
+                            "description": "Max page to return with the parameters 'page' and 'pageSize' set in the request",
+                            "type": "integer",
+                            "example": 12
                         }
                     },
                     "required": [
                         "address",
-                        "txHashes"
+                        "txHashes",
+                        "maxPage"
                     ]
                 }
             },
