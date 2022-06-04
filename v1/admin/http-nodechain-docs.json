@@ -16,6 +16,15 @@
         "version": "1.0.0",
         "description": "Docs relating to the admin endpoints of the Connector"
     },
+    "components": {
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key"
+            }
+        }
+    },
     "paths": {
         "/addcoin": {
             "post": {
@@ -27,6 +36,11 @@
                 ],
                 "deprecated": false,
                 "parameters": [],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -47,6 +61,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized response. Header parameter x-api-key is wrong or is not set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": 401
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -61,6 +95,11 @@
                 ],
                 "deprecated": false,
                 "parameters": [],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -81,6 +120,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized response. Header parameter x-api-key is wrong or is not set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": 401
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -95,6 +154,11 @@
                 ],
                 "deprecated": false,
                 "parameters": [],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -115,6 +179,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized response. Header parameter x-api-key is wrong or is not set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": 401
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -129,6 +213,11 @@
                 ],
                 "deprecated": false,
                 "parameters": [],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -146,6 +235,26 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "./methods-components.json#/components/schemas/RemoveCoinResponseModel"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized response. Header parameter x-api-key is wrong or is not set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": 401
+                                        }
+                                    }
                                 }
                             }
                         }
