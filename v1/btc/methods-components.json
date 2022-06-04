@@ -147,15 +147,20 @@
                 ]
             },
             "GetBlockByHashResponseModel": {
-                "$ref": "model-components.json#/components/schemas/BlockModel"
+                "type": "object",
+                "properties": {
+                    "block": {
+                        "$ref": "./model-components.json#/components/schemas/BlockModel"
+                    }
+                }
             },
             "GetBlockByNumberRequestModel": {
                 "type": "object",
                 "properties": {
                     "blockNumber": {
-                        "description": "Bitcoin block height",
-                        "type": "integer",
-                        "example": 1
+                        "description": "Bitcoin block height. Supports the param latest to get the last block of the chain. The param can be in decimal or hexadecimal format",
+                        "type": "string",
+                        "example": "1"
                     },
                     "verbosity": {
                         "description": "Level of information returned",
@@ -174,7 +179,12 @@
                 ]
             },
             "GetBlockByNumberResponseModel": {
-                "$ref": "model-components.json#/components/schemas/BlockModel"
+                "type": "object",
+                "properties": {
+                    "block": {
+                        "$ref": "./model-components.json#/components/schemas/BlockModel"
+                    }
+                }
             },
             "SyncingRequestModel": {
                 "type": "object",
