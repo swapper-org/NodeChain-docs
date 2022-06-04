@@ -576,7 +576,7 @@
                         "example": 0
                     },
                     "pageSize": {
-                        "description": "Number of transacionts to return per page",
+                        "description": "Number of transactions to return per page",
                         "type": "integer",
                         "maximum": 50,
                         "minimum": 0,
@@ -639,7 +639,7 @@
                         "example": 0
                     },
                     "pageSize": {
-                        "description": "Number of transacionts to return per page",
+                        "description": "Number of transactions to return per page",
                         "type": "integer",
                         "maximum": 50,
                         "minimum": 0,
